@@ -1,0 +1,202 @@
+:root {
+    --color-fondo-principal: #F8F8F8; 
+    --color-texto-principal: #333333; 
+    --color-gris-claro: #EAEAEA;
+    --color-gris-medio: #AAAAAA;
+    --color-acento-principal: #333; 
+    --color-acento-exclusiva: #333; 
+    --fuente-serif: 'Times New Roman', Times, serif; 
+    --fuente-sans: Arial, Helvetica, sans-serif; 
+}
+
+body {
+    font-family: var(--fuente-serif);
+    line-height: 1.6;
+    color: var(--color-texto-principal);
+    background-color: var(--color-fondo-principal);
+    margin: 0;
+    padding: 0;
+}
+
+.news-article {
+    max-width: 800px;
+    margin: 40px auto; 
+    padding: 20px;
+    background-color: white;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+}
+
+header {
+    background-color: var(--color-gris-claro);
+    color: var(--color-texto-principal);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--color-acento-principal); 
+}
+
+header h1 {
+    font-family: var(--fuente-sans); 
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 5px; 
+    text-transform: uppercase;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    font-family: var(--fuente-sans);
+    color: var(--color-acento-principal);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9em;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-texto-principal);
+    border-bottom: 1px solid var(--color-texto-principal);
+}
+
+.exclusive-title {
+    font-family: var(--fuente-sans);
+    font-size: 2.2em;
+    text-align: center; 
+    color: var(--color-acento-exclusiva);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-gris-claro);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.subtitle {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: 1.2em;
+    text-align: center; 
+    color: var(--color-gris-medio);
+    margin-bottom: 30px;
+}
+
+.dateline {
+    font-family: var(--fuente-sans);
+    font-size: 0.85em;
+    color: var(--color-acento-principal);
+    border-bottom: 3px double var(--color-gris-claro);
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.news-article p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+}
+
+.section-heading {
+    font-family: var(--fuente-sans);
+    font-size: 1.4em;
+    color: var(--color-acento-principal);
+    border-left: 5px solid var(--color-gris-claro);
+    padding-left: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.gossip-box,
+.alert-box {
+    background-color: var(--color-gris-claro);
+    border-left: 4px solid var(--color-acento-exclusiva);
+    padding: 15px;
+    margin: 20px 0;
+    font-family: var(--fuente-sans);
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.hefesto-quote,
+.hefesto-moraleja {
+    border: 1px solid var(--color-gris-medio);
+    padding: 15px 20px;
+    margin: 25px 0;
+    font-style: italic;
+    color: var(--color-acento-principal);
+    background-color: #FAFAFA;
+}
+
+.news-article ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.news-article ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.news-article ul li::before {
+    content: '•'; 
+    color: var(--color-acento-exclusiva);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--color-gris-claro);
+    color: var(--color-gris-medio);
+    font-size: 0.8em;
+}
+/* Estilo para la sección de promoción */
+.promo-seccion {
+    text-align: center;
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #FAFAFA; /* Un color de fondo muy claro para destacarse un poco */
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 3px;
+}
+
+.promo-seccion p {
+    font-family: var(--fuente-sans);
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--color-texto-principal);
+    text-align: center;
+}
+
+/* Estilo para el botón de Roblox - Basado en VER DETALLES con Gris Londres */
+.roblox-button {
+    /* Estética General */
+    display: inline-block;
+    font-family: var(--fuente-sans);
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    
+    /* Colores y Forma (Estilo Gris Londres) */
+    color: var(--color-acento-principal); /* Texto oscuro (gris/negro) */
+    background-color: #DCDCDC; /* Fondo Gris Suave/Londres (puedes ajustar el valor si lo prefieres más claro o más oscuro) */
+    border: 1px solid var(--color-gris-medio); /* Borde sutil */
+    padding: 8px 18px; /* Padding ajustado similar a los botones de la imagen */
+    border-radius: 0; /* Sin bordes redondeados, como en la imagen */
+    
+    /* Transición y Sombra */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
+}
+
+.roblox-button:hover {
+    background-color: var(--color-gris-medio); /* Un gris más oscuro al pasar el ratón */
+    border-color: var(--color-acento-principal); /* Borde más oscuro al pasar el ratón */
+}
