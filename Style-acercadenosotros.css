@@ -117,3 +117,71 @@ body {
     opacity: 1;
   }
 }
+/* --- CURSOR GLOBAL (LLAVE INGLESA) --- */
+html, body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
+}
+
+/* Cursor para elementos en los que se puede hacer clic */
+a, button, .cta-button, [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
+}
+
+
+/* --- HEADER ESTILO LIMPIO (SIN GLOW) --- */
+header {
+    width: 100%;
+    background-color: white; 
+    padding: 1rem 0; 
+    text-align: center; 
+    border-bottom: 1px solid #333; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo-title {
+    font-size: 2.5rem; 
+    font-weight: bold;
+    color: #333; /* Color sólido y limpio */
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    /* Hemos eliminado la línea de animation: glow */
+}
+
+nav .nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem; 
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Mantenemos el subrayado naranja al pasar el ratón porque queda muy bien */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #ff4500; 
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff4500;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}

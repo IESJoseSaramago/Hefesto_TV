@@ -3,55 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Hefesto TV - Plataforma de Entretenimiento</title>
+    <title>Hefesto TV - Plataforma de Entretenimiento</title>
     <meta name="description" content="Hefesto TV es una plataforma de entretenimiento donde puedes ver contenido exclusivo y novedades.">
-   <link rel="icon" type="image/png" href="img/logo.png">
-
-<link rel="apple-touch-icon" href="img/logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
 </head>
 <body>
     <header> 
-        <!-- Título principal "HEFESTO TV" -->
         <div class="logo-title">HEFESTO TV</div>
-        
-        <!-- BARRA DE NAVEGACIÓN -->
         <nav>
-            <!-- Eliminamos el div.logo que contenía el texto de exclusiva -->
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="Acercadenosotros.html">Acerca de nosotros </a></li>
+                <li><a href="Acercadenosotros.html">Acerca de nosotros</a></li>
                 <li><a href="noticias.html">Todas nuestras noticias</a></li>
-            
-                <!-- Restauramos los enlaces originales y sus rutas -->
             </ul>
         </nav>
     </header>
     
     <main>
-        <!-- SECCIÓN HERO (Restaurado al texto original del primer intento) -->
         <section id="hero">
-            <h1>Todos los nuevos chismes y últimas noticias</h1>
-            <p>Últimos chismes, guerras, amoríos y noticias del mundo del olimpo y todos aquellos relacionados con el. </p>
-            <a href="noticias.html" class="cta-button">Descubrir secretos divinos </a>
+            <div class="hero-content">
+                <h1>Todos los nuevos chismes y últimas noticias</h1>
+                <p>Últimos chismes, guerras, amoríos y noticias del mundo del olimpo y todos aquellos relacionados con el.</p>
+                <a href="noticias.html" class="cta-button">Descubrir secretos divinos</a>
+            </div>
         </section>
         
-        <!-- Contenido secundario (Chismes destacados) - Se mantiene igual -->
         <section id="Chismesynoticiasdivinas">
             <h2>Chismes y noticias divinas destacadas</h2>
             <div class="Chismesynoticiasdivinas-grid">
                 <div class="Mito-card">
-                    <img src="img/Gemini_Generated_Image_h9obyzh9obyzh9ob.png" alt="Sale a la luz: antigua disputa ateniense revela el origen de las arañas: ">
-                    <h3>Sale a la luz: antigua disputa ateniense revela el origen de las arañas :</h3>
+                    <img src="img/Gemini_Generated_Image_h9obyzh9obyzh9ob.png" alt="Aracne">
+                    <h3>Sale a la luz: antigua disputa ateniense revela el origen de las arañas</h3>
                     <a href="Aracne.html">Ver detalles</a>
                 </div>
                 <div class="Mito-card">
-                    <img src="img/Gemini_Generated_Image_4is4d84is4d84is4.png" alt="Sale a la luz: antigua disputa ateniense revela el origen de las arañas: ">
-                    <h3>LA MIRADA LETAL: El Secreto de Medusa, una doncella transformada en monstruo por la ira de Atenea, desafía al héroe Perseo en la imposible misión de su decapitación :</h3>
+                    <img src="img/Gemini_Generated_Image_4is4d84is4d84is4.png" alt="Medusa">
+                    <h3>LA MIRADA LETAL: El Secreto de Medusa</h3>
                     <a href="Medusa.html">Ver detalles</a>
                 </div>
                 <div class="Mito-card">
-                    <img src="img/imagen 3.png" alt="Sale a la luz: antigua disputa ateniense revela el origen de las arañas: ">
-                    <h3>La que lia un calenton de Zeus: un toro, fugas a islas griegas, un rey y su monstruo, el más inteligente familiar real ateniense, unos cuantos amorios y "accidentales" muertes de mortales. </h3>
+                    <img src="img/imagen 3.png" alt="Minotauro">
+                    <h3>La que lia un calenton de Zeus: El Minotauro</h3>
                     <a href="Minotauro.html">Ver detalles</a>
                 </div>
             </div>
@@ -59,26 +55,23 @@
     </main>
     
     <footer>
-        <p>&copy Hefesto TV. Todos los derechos reservados</p>
+        <p>&copy; Hefesto TV. Todos los derechos reservados</p>
     </footer>
+
     <script>
-const elements = document.querySelectorAll(".card");
+    const elements = document.querySelectorAll(".Mito-card");
 
-window.addEventListener("scroll", () => {
-  elements.forEach(el => {
-    const position = el.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
+    window.addEventListener("scroll", () => {
+      elements.forEach(el => {
+        const position = el.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
 
-    if(position < screenHeight - 100){
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }
-  });
-});
-</script>
+        if(position < screenHeight - 100){
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }
+      });
+    });
+    </script>
 </body>
 </html>
-                
-            
-            
-
