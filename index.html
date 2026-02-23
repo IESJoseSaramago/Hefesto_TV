@@ -31,7 +31,7 @@
         <section id="hero">
             <h1>Todos los nuevos chismes y últimas noticias</h1>
             <p>Últimos chismes, guerras, amoríos y noticias del mundo del olimpo y todos aquellos relacionados con el. </p>
-            <a href="noticias.html" class="cta-button">Haz click aqui para verlas </a>
+            <a href="noticias.html" class="cta-button">Descubrir secretos divinos </a>
         </section>
         
         <!-- Contenido secundario (Chismes destacados) - Se mantiene igual -->
@@ -60,6 +60,21 @@
     <footer>
         <p>&copy Hefesto TV. Todos los derechos reservados</p>
     </footer>
+    <script>
+const elements = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if(position < screenHeight - 100){
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }
+  });
+});
+</script>
 </body>
 </html>
                 

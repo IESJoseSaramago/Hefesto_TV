@@ -200,3 +200,16 @@ footer {
     background-color: var(--color-gris-medio); /* Un gris más oscuro al pasar el ratón */
     border-color: var(--color-acento-principal); /* Borde más oscuro al pasar el ratón */
 }
+nav a:hover::after {
+  width: 100%;
+}
+ html, body {
+  /* Versión corregida y codificada del emoji */
+ * cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
+  min-height: 100vh;
+}
+
+/* Es importante añadirlo también a los enlaces para que no vuelva a la flecha normal */
+a, button { 
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
+}
