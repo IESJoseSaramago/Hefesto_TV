@@ -222,3 +222,19 @@ nav {
     box-shadow: 0 0 20px rgba(255, 69, 0, 0.6); /* Resplandor naranja */
     transition: all 0.3s ease;
 }
+footer {
+    background-color: #333; /* Fondo oscuro para contrastar con el resto blanco */
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem; /* Más espacio arriba y abajo */
+    margin-top: 4rem; /* Separación de las tarjetas de noticias */
+    border-top: 3px solid #ff4500; /* Línea naranja temática de Hefesto */
+}
+
+footer p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+footer {
+    padding-bottom: 2rem; /* Añade un poco de aire extra al final */
+}
