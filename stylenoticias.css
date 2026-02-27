@@ -1,315 +1,172 @@
-/*
-    -------------------------------------------
-    HEFESTO TV - PÁGINA DE NOVEDADES
-    Estilo: Layout de Noticias de Dos Columnas
-    -------------------------------------------
-*/
+/* -------------------------------------------
+   HEFESTO TV - ARCHIVO CSS LIMPIO
+   ------------------------------------------- */
 
-/* --- VARIABLES DE COLOR Y FUENTE --- */
+/* --- 1. VARIABLES --- */
 :root {
-    --color-fondo-principal: #F8F8F8; /* Blanco Roto/Gris Claro */
-    --color-texto-principal: #333333; /* Gris Oscuro (Texto) */
-    --color-gris-claro: #EAEAEA;
-    --color-acento-principal: #5C5C5C; /* Gris de acento para bordes/títulos */
-    --color-acento-exclusiva: #B22222; /* Rojo, usado para botones/énfasis */
-    --fuente-serif: 'Times New Roman', Times, serif; /* Clásico */
-    --fuente-sans: Arial, Helvetica, sans-serif; /* Moderno */
+    --color-fondo: #F8F8F8;
+    --color-texto: #333333;
+    --color-gris: #EAEAEA;
+    --color-acento-rojo: #B22222;
+    --color-acento-naranja: #ff4500;
+    --fuente-serif: 'Times New Roman', Times, serif;
+    --fuente-sans: Arial, Helvetica, sans-serif;
 }
 
-/* --- ESTILOS BASE --- */
+/* --- 2. GLOBAL Y RESET --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: var(--fuente-serif);
     line-height: 1.6;
-    background-color: var(--color-fondo-principal);
-    color: var(--color-texto-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in;
+    /* Cursor global unificado */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
 }
 
+a, button, .cta-button, [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
+}
+
+/* --- 3. HEADER Y NAV --- */
+header {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.logo-title {
+    font-family: var(--fuente-sans);
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* Contenedor Sticky de Navegación */
+.main-navigation {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom: 4px solid var(--color-acento-naranja); /* Línea naranja total */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1.2rem;
+    padding: 0.8rem 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-family: var(--fuente-sans);
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.5rem 0.8rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-acento-naranja);
+    background-color: rgba(255, 69, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* --- 4. SECCIONES PRINCIPALES --- */
 main {
-    max-width: 1000px; 
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* --- ENCABEZADO (HEADER) - BANNER CENTRAL CON TÍTULO Y NAV DEBAJO --- */
-header {
-    background-color: white; /* Fondo blanco original */
-    /* *** CAMBIO TEMPORAL PARA COMPROBAR CARGA DE CSS. SI LO VES AMARILLO, FUNCIONA. LUEGO ELIMINA ESTA LÍNEA: *** */
-    /* background-color: #FFD700; */
-    
-    color: var(--color-texto-principal); 
-    padding: 20px 0; /* Más espacio vertical */
-    border-bottom: 1px solid var(--color-gris-claro); /* Línea divisoria sutil */
-    font-family: var(--fuente-sans);
-    text-align: center; /* Centra el contenido del header */
-}
-
-.header-container {
-    display: flex;
-    flex-direction: column; /* Apila título y nav */
-    align-items: center; /* Centra horizontalmente los elementos apilados */
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-header h1 {
-    font-size: 2.5em; /* Título más grande */
-    margin-bottom: 15px; /* Separación de la navegación */
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-nav {
-    display: flex; 
-    justify-content: center; /* Centra los enlaces dentro del nav */
-    gap: 25px; /* Más separación entre enlaces */
-    padding-bottom: 15px; /* Separación del contenido principal */
-    border-bottom: 3px solid var(--color-acento-exclusiva); /* Separador rojo */
-    width: 90%; /* Ancho de la barra de navegación */
-    max-width: 800px;
-}
-
-nav a {
-    color: var(--color-texto-principal);
-    text-decoration: none;
-    font-size: 0.9em; 
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    text-transform: uppercase;
-    white-space: nowrap; 
-}
-
-nav a:hover {
-    color: var(--color-acento-exclusiva); 
-    /* Efecto de borde sutil al pasar el ratón */
-    border-bottom: 2px solid var(--color-acento-exclusiva); 
-}
-
-
-/* --- SECCIÓN HERO (TÍTULOS DE PÁGINA) - CAJA RECORTADA Y ESTILO BANNER --- */
 #hero {
-    /* Estilo de la caja mejorado */
     background-color: white;
     padding: 40px 20px;
-    margin-bottom: 40px;
-    margin-top: 40px; 
-    border: 2px solid var(--color-acento-exclusiva); /* Borde rojo destacado */
+    margin: 40px auto;
+    border: 2px solid var(--color-acento-rojo);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; /* Bordes más redondeados */
-    /* Ancho limitado para que parezca una caja central y no ocupe todo */
+    border-radius: 8px;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 }
 
 .titulo {
     font-family: var(--fuente-sans);
-    font-size: 2em; /* Tamaño ligeramente reducido para ajustarse a la caja */
-    text-align: center;
-    color: var(--color-acento-exclusiva); /* Título en color rojo */
+    font-size: 2em;
+    color: var(--color-acento-rojo);
     margin-bottom: 10px;
     text-transform: uppercase;
-    font-weight: 700;
 }
 
-.subtitulo {
-    font-family: var(--fuente-serif);
-    font-size: 1em;
-    font-style: italic;
-    text-align: center;
-    color: var(--color-acento-principal);
-    padding: 0 10px; /* Pequeño padding para el texto */
-}
-
-/* --- LISTA DE NOTICIAS --- */
-#Chismesynoticiasdivinas {
+/* --- 5. TARJETAS (NOTICIAS) --- */
+.Chismesynoticiasdivinas-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px;
 }
 
-
-/* --- TARJETA DE NOTICIA (Mito-card) - ESTILO DE DOS COLUMNAS --- */
 .Mito-card {
     background: white;
-    border: 1px solid var(--color-gris-claro);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease; /* Transición para el hover */
-    
-    display: flex; 
-    flex-direction: row; 
-    align-items: stretch; 
-    min-height: 200px; 
-    border-radius: 5px; 
-    overflow: hidden; 
+    border: 1px solid var(--color-gris);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-/* --- EFECTO HOVER: Destacar la tarjeta al pasar el cursor --- */
 .Mito-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
-    transform: translateY(-3px); 
-    border-color: var(--color-acento-exclusiva); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
 }
 
 .Mito-card img {
-    width: 33%; 
-    max-width: 300px;
-    height: auto;
+    width: 30%;
     object-fit: cover;
-    display: block;
-    border-right: 2px solid var(--color-acento-exclusiva); 
+    border-right: 2px solid var(--color-acento-rojo);
 }
 
 .card-content {
-    width: 67%;
+    width: 70%;
     padding: 20px;
     display: flex;
-    flex-direction: column; 
-    justify-content: space-between; 
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card-content h3 {
-    font-family: var(--fuente-sans);
-    font-size: 1.2em;
-    line-height: 1.4;
-    color: var(--color-texto-principal);
-    margin-bottom: 10px;
-    text-align: left; 
-}
-
-/* --- ESTILOS DE BOTONES Y ENLACES (ACCIÓN) --- */
-.card-content a { 
-    align-self: flex-end; 
-    
-    background-color: var(--color-acento-exclusiva); 
-    color: white; 
-    text-align: center; 
-    font-family: var(--fuente-sans);
+.card-content a {
+    align-self: flex-start;
+    background-color: var(--color-acento-rojo);
+    color: white;
     padding: 10px 20px;
-    font-size: 0.9em;
-    
-    border: none;
-    border-radius: 3px;
-    cursor: pointer; 
     text-decoration: none;
-    transition: background-color 0.3s;
-    text-transform: uppercase;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
-.card-content a:hover {
-    background-color: #8B0000; 
-}
-
-/* --- MEDIA QUERIES (Responsividad) --- */
+/* --- 6. ANIMACIONES Y RESPONSIVO --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 @media screen and (max-width: 768px) {
-    /* El título se reduce y el nav se apila en móvil */
-    header h1 {
-        font-size: 2em;
-    }
-    header nav {
-        flex-direction: column;
-        gap: 10px;
-        border-bottom: none; /* Quitamos la línea para que no estorbe */
-    }
-    header nav a {
-        padding: 2px 0;
-        font-size: 0.9em;
-    }
-
-    /* La caja de héroe se ajusta al 100% del ancho */
-    #hero {
-        max-width: 95%;
-        padding: 30px 15px;
-    }
-    .titulo {
-        font-size: 1.5em;
-    }
-
-    /* Las tarjetas se vuelven de una sola columna (verticales) */
-    .Mito-card {
-        flex-direction: column;
-        min-height: auto;
-    }
-    
-    .Mito-card img {
-        width: 100%; 
-        max-width: none;
-        height: 250px; 
-        border-right: none;
-        border-bottom: 2px solid var(--color-acento-exclusiva);
-    }
-    
-    .card-content {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .card-content a {
-        align-self: stretch; 
-        margin-top: 15px;
-    }
-}
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-}
-nav a {
-  position: relative;
-  padding-bottom: 5px;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #B22222;
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
- html, body {
-  /* Versión corregida y codificada del emoji */
- * cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
-  min-height: 100vh;
-}
-
-/* Es importante añadirlo también a los enlaces para que no vuelva a la flecha normal */
-body {
-  animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-/* --- CURSOR GLOBAL (LLAVE INGLESA) --- */
-html, body {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
-}
-
-/* Cursor para elementos en los que se puede hacer clic */
-a, button, .cta-button, [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
+    .Mito-card { flex-direction: column; }
+    .Mito-card img { width: 100%; height: 200px; border-right: none; border-bottom: 2px solid var(--color-acento-rojo); }
+    .card-content { width: 100%; }
 }

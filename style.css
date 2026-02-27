@@ -1,149 +1,104 @@
-/* --- VARIABLES DE COLOR Y FUENTE --- */
+/* ===========================================
+    HEFESTO TV - DISEÑO FINAL UNIFICADO
+    ===========================================
+*/
+
 :root {
-    --color-primario: #34495e;
-    --color-acento-claro: #5C95FF;
-    --color-acento-cta: rgb(66, 40, 182);
-    --color-texto-claro: #FFFFFF; 
-    --color-texto-oscuro: #333333;
-    --color-fondo-secundario: #f4f4f4;
-    --color-mitologico: #8a2be2; /* Color de las animaciones */
+    --naranja-hefesto: #ff4500;
+    --morado-noticias: rgb(66, 40, 182);
+    --texto-oscuro: #333333;
+    --gris-fondo: #f8f9fa;
 }
 
-/* --- ESTILOS BASE Y CURSOR --- */
+/* --- 1. RESET Y CURSOR --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif; 
 }
 
 html, body {
+    font-family: Arial, sans-serif;
+    background-color: var(--gris-fondo);
     min-height: 100vh;
-    line-height: 1.6;
-    background-color: var(--color-fondo-secundario);
-    color: var(--color-texto-oscuro);
-    /* Cursor de herramienta corregido */
+    /* Cursor de herramienta en toda la web */
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
-    animation: fadeIn 1s ease-in;
 }
 
-/* Aplicar cursor a elementos interactivos */
 a, button, .cta-button {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
 }
 
-/* ---------------------------------------------------- */
-/* --- HEADER Y NAVEGACIÓN --- */
-/* ---------------------------------------------------- */
-
+/* --- 2. HEADER Y MENÚ PROFESIONAL --- */
 header {
-    width: 100%;
-    z-index: 10;
-    background-color: white; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-    text-align: center; 
-    padding-top: 1rem; 
-    border-bottom: 1px solid var(--color-texto-oscuro); 
+    background-color: white;
+    text-align: center;
+    padding-top: 2rem;
 }
 
 .logo-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--color-texto-oscuro);
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--texto-oscuro);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
 }
 
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.5rem 2rem 1rem 2rem;
+.main-navigation {
+    background-color: var(--gris-fondo);
+    border-top: 1px solid #ddd;
+    border-bottom: 5px solid var(--naranja-hefesto); /* Línea naranja infinita */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--color-texto-oscuro);
-    padding: 0.5rem;
-    display: block;
-    transition: color 0.2s;
-    position: relative; /* Para el efecto de subrayado */
+    color: var(--texto-oscuro);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-/* Efecto de subrayado animado */
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 2px;
-    background: var(--color-mitologico);
-    transition: width 0.3s ease;
-}
+.nav-links a:hover { color: var(--naranja-hefesto); }
 
-.nav-links a:hover {
-    color: var(--color-acento-cta);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* ---------------------------------------------------- */
-/* --- SECCIÓN HERO --- */
-/* ---------------------------------------------------- */
-
+/* --- 3. COLLAGE (HERO) --- */
 #hero {
-    min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("img/imagen portada.jpg");
+    min-height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("img/imagen portada.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
-    padding: 0 1rem;
+    padding: 2rem;
 }
 
 #hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
-    letter-spacing: 3px;
     animation: glow 3s infinite alternate;
 }
 
-.hero-content {
-    animation: slideUp 1s ease-out;
-}
+#hero p { font-size: 1.2rem; margin-bottom: 2rem; }
 
-.cta-button {
-    background-color: var(--color-acento-cta);
-    color: white;
-    padding: 0.7rem 2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s;
-    margin-top: 2rem;
-}
-
-.cta-button:hover {
-    background-color: rgb(45, 7, 218); 
-}
-
-/* ---------------------------------------------------- */
-/* --- SECCIÓN DE CONTENIDO (MITOS) --- */
-/* ---------------------------------------------------- */
-
+/* --- 4. GRID DE NOTICIAS (ARREGLADO) --- */
 #Chismesynoticiasdivinas {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -152,89 +107,67 @@ nav {
 
 .Chismesynoticiasdivinas-grid {
     display: grid;
+    /* Crea 3 columnas que se adaptan solas */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
 .Mito-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
+
+.Mito-card:hover { transform: translateY(-10px); }
 
 .Mito-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
 }
 
-.Mito-card a {
-    margin: 1rem;
-    padding: 0.3rem 1rem;
-    background-color: #333;
+.Mito-card h3 {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    color: var(--texto-oscuro);
+    flex-grow: 1; /* Para alinear los botones abajo */
+}
+
+/* --- 5. BOTONES CON DEGRADADO NARANJA --- */
+.cta-button, .Mito-card a {
+    background-color: var(--morado-noticias);
     color: white !important;
     text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-/* ---------------------------------------------------- */
-/* --- ANIMACIONES (KEYFRAMES) --- */
-/* ---------------------------------------------------- */
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;
-    }
-    to {
-        text-shadow: 0 0 20px #ff8c00, 0 0 30px #ff4500;
-    }
-}
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- RESPONSIVIDAD --- */
-@media screen and (max-width: 430px) {
-    .logo-title { font-size: 2rem; }
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
-/* Efecto de pulso naranja al pasar el ratón */
-.cta-button:hover {
-    background-color: #ff4500; /* Naranja fuego al hover */
-    transform: scale(1.05); /* Crece un poquito */
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.6); /* Resplandor naranja */
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
     transition: all 0.3s ease;
+    margin: 1rem; /* Espacio para el botón en la tarjeta */
 }
+
+/* El efecto degradado de "pinchar" que pediste */
+.cta-button:hover, .Mito-card a:hover {
+    background: linear-gradient(45deg, #ff4500, #ff8c00);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+}
+
+/* --- 6. FOOTER --- */
 footer {
-    background-color: #333; /* Fondo oscuro para contrastar con el resto blanco */
+    background-color: #222;
     color: white;
     text-align: center;
-    padding: 3rem 1rem; /* Más espacio arriba y abajo */
-    margin-top: 4rem; /* Separación de las tarjetas de noticias */
-    border-top: 3px solid #ff4500; /* Línea naranja temática de Hefesto */
+    padding: 3rem;
+    border-top: 5px solid var(--naranja-hefesto);
 }
 
-footer p {
-    font-size: 1rem;
-    letter-spacing: 1px;
-}
-footer {
-    padding-bottom: 2rem; /* Añade un poco de aire extra al final */
+/* --- ANIMACIONES --- */
+@keyframes glow {
+    from { text-shadow: 0 0 10px var(--naranja-hefesto); }
+    to { text-shadow: 0 0 25px #ff8c00, 0 0 40px var(--naranja-hefesto); }
 }
