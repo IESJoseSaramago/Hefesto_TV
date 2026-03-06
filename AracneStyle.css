@@ -1,178 +1,152 @@
+/* -------------------------------------------
+   HEFESTO TV - ESTILO GLOBAL UNIFICADO
+   ------------------------------------------- */
+
+/* 1. VARIABLES - Centraliza aquí tus colores */
 :root {
-    --color-fondo-principal: #F8F8F8; 
-    --color-texto-principal: #333333; 
+    --color-fondo: #F8F8F8;
+    --color-texto: #333333;
     --color-gris-claro: #EAEAEA;
     --color-gris-medio: #AAAAAA;
-    --color-acento-principal: #333; 
-    --color-acento-exclusiva: #333; 
-    --fuente-serif: 'Times New Roman', Times, serif; 
-    --fuente-sans: Arial, Helvetica, sans-serif; 
+    --color-acento-rojo: #B22222;
+    --color-acento-naranja: #ff4500;
+    --fuente-serif: 'Times New Roman', Times, serif;
+    --fuente-sans: Arial, Helvetica, sans-serif;
 }
 
-body {
-    font-family: var(--fuente-serif);
-    line-height: 1.6;
-    color: var(--color-texto-principal);
-    background-color: var(--color-fondo-principal);
+/* --- 2. GLOBAL Y RESET --- */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.news-article {
-    max-width: 800px;
-    margin: 40px auto; 
-    padding: 20px;
-    background-color: white;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+html, body {
+    font-family: var(--fuente-serif);
+    line-height: 1.6;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in;
+    /* Cursor global unificado */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
 }
 
+a, button, .cta-button, [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
+}
+
+/* --- 3. HEADER Y NAV --- */
 header {
-    background-color: var(--color-gris-claro);
-    color: var(--color-texto-principal);
-    padding: 20px 0;
+    background-color: white;
+    width: 100%;
     text-align: center;
-    border-bottom: 2px solid var(--color-acento-principal); 
+    padding: 1.5rem 0;
 }
 
-header h1 {
-    font-family: var(--fuente-sans); 
-    font-size: 2.5em;
-    margin: 0;
-    letter-spacing: 5px; 
-    text-transform: uppercase;
-}
-
-nav {
-    margin-top: 10px;
-}
-
-nav a {
+.logo-title {
     font-family: var(--fuente-sans);
-    color: var(--color-acento-principal);
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* Contenedor Sticky de Navegación */
+.main-navigation {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom: 4px solid var(--color-acento-naranja); /* Línea naranja total */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1.2rem;
+    padding: 0.8rem 0;
+    margin: 0;
+}
+
+.nav-links a {
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 0.9em;
-    padding: 5px 0;
+    color: #444;
+    font-family: var(--fuente-sans);
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.5rem 0.8rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-acento-naranja);
+    background-color: rgba(255, 69, 0, 0.1);
+    border-radius: 4px;
+}
+/* 4. NAVEGACIÓN STICKY */
+.main-navigation {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom: 4px solid var(--color-acento-naranja); /* La línea naranja principal */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1.2rem;
+    padding: 0.8rem 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-family: var(--fuente-sans);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
     transition: color 0.3s;
 }
 
-nav a:hover {
-    color: var(--color-texto-principal);
-    border-bottom: 1px solid var(--color-texto-principal);
+.nav-links a:hover {
+    color: var(--color-acento-naranja);
+}
+
+/* 5. CONTENEDOR DE ARTÍCULOS (Como el de Aracne) */
+.news-article {
+    max-width: 800px;
+    margin: 40px auto; 
+    padding: 30px;
+    background-color: white;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
 }
 
 .exclusive-title {
     font-family: var(--fuente-sans);
     font-size: 2.2em;
     text-align: center; 
-    color: var(--color-acento-exclusiva);
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-gris-claro);
-    padding-bottom: 10px;
-    margin-top: 0;
-}
-
-.subtitle {
-    font-family: var(--fuente-serif);
-    font-style: italic;
-    font-size: 1.2em;
-    text-align: center; 
-    color: var(--color-gris-medio);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .dateline {
     font-family: var(--fuente-sans);
     font-size: 0.85em;
-    color: var(--color-acento-principal);
     border-bottom: 3px double var(--color-gris-claro);
     padding-bottom: 5px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.news-article p {
-    margin-bottom: 1.2em;
-    text-align: justify;
-}
-
-.section-heading {
-    font-family: var(--fuente-sans);
-    font-size: 1.4em;
-    color: var(--color-acento-principal);
-    border-left: 5px solid var(--color-gris-claro);
-    padding-left: 10px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.gossip-box,
-.alert-box {
-    background-color: var(--color-gris-claro);
-    border-left: 4px solid var(--color-acento-exclusiva);
-    padding: 15px;
-    margin: 20px 0;
-    font-family: var(--fuente-sans);
-    font-size: 0.9em;
-    line-height: 1.5;
-}
-
-.hefesto-quote,
-.hefesto-moraleja {
-    border: 1px solid var(--color-gris-medio);
-    padding: 15px 20px;
-    margin: 25px 0;
-    font-style: italic;
-    color: var(--color-acento-principal);
-    background-color: #FAFAFA;
-}
-
-.news-article ul {
-    list-style-type: none;
-    padding-left: 20px;
-}
-
-.news-article ul li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 15px;
-}
-
-.news-article ul li::before {
-    content: '•'; 
-    color: var(--color-acento-exclusiva);
-    font-weight: bold;
-    display: inline-block; 
-    width: 1em;
-    margin-left: -1em;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 1px solid var(--color-gris-claro);
-    color: var(--color-gris-medio);
-    font-size: 0.8em;
-}
-nav a:hover::after {
-  width: 100%;
-}
- html, body {
-  /* Versión corregida y codificada del emoji */
- * cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
-  min-height: 100vh;
-}
-
-/* Es importante añadirlo también a los enlaces para que no vuelva a la flecha normal */
-a, button { 
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
-}
-/* --- CURSOR GLOBAL (LLAVE INGLESA) --- */
-html, body {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
-}
-
-/* Cursor para elementos en los que se puede hacer clic */
-a, button, .cta-button, [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
-}
+/* 6. ANIMACIONES */
+body { animation: fadeIn 1s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

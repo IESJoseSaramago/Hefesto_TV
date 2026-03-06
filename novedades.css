@@ -1,17 +1,3 @@
-/* ===========================================
-    HEFESTO TV - DISEÑO FINAL UNIFICADO
-    ===========================================
-*/
-
-:root {
-    --naranja-hefesto: #ff4500;
-    --morado-noticias: rgb(66, 40, 182);
-    --texto-oscuro: #333333;
-    --gris-fondo: #f8f9fa;
-} 
-
-
-
 /* --- 1. VARIABLES --- */
 :root {
     --color-fondo: #F8F8F8;
@@ -99,100 +85,72 @@ header {
     background-color: rgba(255, 69, 0, 0.1);
     border-radius: 4px;
 }
-
-.nav-links a:hover { color: var(--naranja-hefesto); }
-
-/* --- 3. COLLAGE (HERO) --- */
-#hero {
-    min-height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("img/imagen portada.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-}
-
-#hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    animation: glow 3s infinite alternate;
-}
-
-#hero p { font-size: 1.2rem; margin-bottom: 2rem; }
-
-/* --- 4. GRID DE NOTICIAS (ARREGLADO) --- */
-#Chismesynoticiasdivinas {
-    padding: 4rem 2rem;
+/* --- 4. GRID DE NOTICIAS (3 Columnas) --- */
+.novedades-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.Chismesynoticiasdivinas-grid {
+.news-grid {
     display: grid;
-    /* Crea 3 columnas que se adaptan solas */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas como en Noticias */
+    gap: 25px;
 }
 
-.Mito-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.news-card {
+    background: #fff;
+    border: 1px solid #eee;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra suave original */
 }
 
-.Mito-card:hover { transform: translateY(-10px); }
-
-.Mito-card img {
+.news-image {
     width: 100%;
     height: 220px;
     object-fit: cover;
 }
 
-.Mito-card h3 {
-    padding: 1.5rem 1rem;
-    font-size: 1.1rem;
-    color: var(--texto-oscuro);
-    flex-grow: 1; /* Para alinear los botones abajo */
+.news-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/* --- 5. BOTONES CON DEGRADADO NARANJA --- */
-.cta-button, .Mito-card a {
-    background-color: var(--morado-noticias);
-    color: white !important;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
+.news-content h3 {
+    font-size: 18px;
     font-weight: bold;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin: 1rem; /* Espacio para el botón en la tarjeta */
+    margin-bottom: 12px;
+    text-transform: uppercase;
 }
 
-/* El efecto degradado de "pinchar" que pediste */
+.news-content p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* --- 5. BOTONES VER DETALLES (Rojo Hefesto) --- */
+.btn-detalles {
+    background-color: #b71c1c;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    width: fit-content;
+}
 .cta-button:hover, .Mito-card a:hover {
     background: linear-gradient(45deg, #ff4500, #ff8c00);
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
 }
 
-/* --- 6. FOOTER --- */
-footer {
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 3rem;
-    border-top: 5px solid var(--naranja-hefesto);
-}
-
-/* --- ANIMACIONES --- */
 @keyframes glow {
     from { text-shadow: 0 0 10px var(--naranja-hefesto); }
     to { text-shadow: 0 0 25px #ff8c00, 0 0 40px var(--naranja-hefesto); }
