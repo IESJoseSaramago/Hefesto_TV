@@ -1,0 +1,35 @@
+.hermes-container {
+    position: fixed;
+    bottom: 20px;
+    right: -300px; /* Empieza fuera de la pantalla */
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffd700; /* Color oro */
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: right 1s ease-in-out;
+    z-index: 1000;
+}
+
+.hermes-container.visible {
+    right: 20px; /* Se desliza hacia adentro */
+}
+
+.talaria-icon {
+    width: 40px;
+    animation: aleteo 0.5s infinite alternate ease-in-out;
+}
+
+.mensaje-hermes {
+    color: #ffd700;
+    margin-left: 10px;
+    font-family: 'Cinzel', serif; /* O la fuente que uses en Hefesto TV */
+    font-weight: bold;
+}
+
+/* Animación de vuelo */
+@keyframes aleteo {
+    from { transform: translateY(0) rotate(-5deg); }
+    to { transform: translateY(-10px) rotate(5deg); }
+}

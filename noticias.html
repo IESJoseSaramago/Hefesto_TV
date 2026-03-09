@@ -91,20 +91,11 @@
 
         </section>
     </main>
-    <script>
-const elements = document.querySelectorAll(".card");
-
-window.addEventListener("scroll", () => {
-  elements.forEach(el => {
-    const position = el.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if(position < screenHeight - 100){
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }
-  });
-});
-</script>
+<button id="boton-subir" class="columna-subir" onclick="derrumbarYSubir()">
+<div class="columna-icon-wrapper">
+<span class="columna-emoji">🏛️</span>
+</div>
+<span class="texto-columna">SUBIR</span>
+</button><script src="script.js"></script>
 </body>
 </html>

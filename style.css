@@ -1,29 +1,17 @@
 /* ===========================================
-    HEFESTO TV - DISEÑO FINAL UNIFICADO
-    ===========================================
-*/
+    HEFESTO TV - DISEÑO ORIGINAL RESTAURADO
+   =========================================== */
 
 :root {
     --naranja-hefesto: #ff4500;
     --morado-noticias: rgb(66, 40, 182);
     --texto-oscuro: #333333;
-    --gris-fondo: #f8f9fa;
-} 
-
-
-
-/* --- 1. VARIABLES --- */
-:root {
     --color-fondo: #F8F8F8;
-    --color-texto: #333333;
-    --color-gris: #EAEAEA;
-    --color-acento-rojo: #B22222;
-    --color-acento-naranja: #ff4500;
     --fuente-serif: 'Times New Roman', Times, serif;
     --fuente-sans: Arial, Helvetica, sans-serif;
 }
 
-/* --- 2. GLOBAL Y RESET --- */
+/* --- 1. GLOBAL Y RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -36,16 +24,11 @@ html, body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     min-height: 100vh;
-    animation: fadeIn 1s ease-in;
-    /* Cursor global unificado */
+    /* Cursor de herramienta de Hefesto */
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
 }
 
-a, button, .cta-button, [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), pointer !important;
-}
-
-/* --- 3. HEADER Y NAV --- */
+/* --- 2. HEADER Y NAV (Tu diseño original) --- */
 header {
     background-color: white;
     width: 100%;
@@ -62,11 +45,10 @@ header {
     margin-bottom: 15px;
 }
 
-/* Contenedor Sticky de Navegación */
 .main-navigation {
     background-color: #f8f9fa;
     border-top: 1px solid #ddd;
-    border-bottom: 4px solid var(--color-acento-naranja); /* Línea naranja total */
+    border-bottom: 4px solid var(--naranja-hefesto);
     position: sticky;
     top: 0;
     z-index: 999;
@@ -79,7 +61,6 @@ header {
     list-style: none;
     gap: 1.2rem;
     padding: 0.8rem 0;
-    margin: 0;
 }
 
 .nav-links a {
@@ -90,25 +71,23 @@ header {
     font-weight: bold;
     padding: 0.5rem 0.8rem;
     text-transform: uppercase;
-    white-space: nowrap;
     transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--color-acento-naranja);
+    color: var(--naranja-hefesto);
     background-color: rgba(255, 69, 0, 0.1);
     border-radius: 4px;
 }
 
-.nav-links a:hover { color: var(--naranja-hefesto); }
-
-/* --- 3. COLLAGE (HERO) --- */
+/* --- 3. HERO SECTION --- */
 #hero {
     min-height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("img/imagen portada.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -122,9 +101,7 @@ header {
     animation: glow 3s infinite alternate;
 }
 
-#hero p { font-size: 1.2rem; margin-bottom: 2rem; }
-
-/* --- 4. GRID DE NOTICIAS (ARREGLADO) --- */
+/* --- 4. GRID DE NOTICIAS --- */
 #Chismesynoticiasdivinas {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -133,7 +110,6 @@ header {
 
 .Chismesynoticiasdivinas-grid {
     display: grid;
-    /* Crea 3 columnas que se adaptan solas */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
@@ -156,14 +132,7 @@ header {
     object-fit: cover;
 }
 
-.Mito-card h3 {
-    padding: 1.5rem 1rem;
-    font-size: 1.1rem;
-    color: var(--texto-oscuro);
-    flex-grow: 1; /* Para alinear los botones abajo */
-}
-
-/* --- 5. BOTONES CON DEGRADADO NARANJA --- */
+/* --- 5. BOTONES --- */
 .cta-button, .Mito-card a {
     background-color: var(--morado-noticias);
     color: white !important;
@@ -173,10 +142,10 @@ header {
     font-weight: bold;
     text-align: center;
     transition: all 0.3s ease;
-    margin: 1rem; /* Espacio para el botón en la tarjeta */
+    margin: 1rem;
+    display: inline-block;
 }
 
-/* El efecto degradado de "pinchar" que pediste */
 .cta-button:hover, .Mito-card a:hover {
     background: linear-gradient(45deg, #ff4500, #ff8c00);
     transform: scale(1.05);
@@ -192,8 +161,64 @@ footer {
     border-top: 5px solid var(--naranja-hefesto);
 }
 
-/* --- ANIMACIONES --- */
+/* --- LA COLUMNA (FIJA A LA DERECHA) --- */
+.columna-subir {
+    position: fixed !important;
+    bottom: 160px !important; /* Altura para no tapar noticias */
+    right: 30px !important;
+    left: auto !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.3s;
+    z-index: 10000;
+    padding: 0;
+}
+
+.columna-subir.mostrar {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.columna-emoji {
+    font-size: 45px;
+    filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
+    line-height: 1; /* Evita espacios extraños */
+}
+
+.texto-columna {
+    color: #ffd700 !important;
+    font-size: 12px !important; /* Un poco más grande para que se lea */
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 5px; /* Separación del icono */
+    letter-spacing: 1.5px;
+    /* Sombra negra para que resalte sobre cualquier fondo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000; 
+}
+/* --- 8. ANIMACIONES --- */
 @keyframes glow {
     from { text-shadow: 0 0 10px var(--naranja-hefesto); }
     to { text-shadow: 0 0 25px #ff8c00, 0 0 40px var(--naranja-hefesto); }
+}
+
+.derrumbe {
+    animation: temblor 0.5s linear, caer 0.8s forwards !important;
+}
+
+@keyframes temblor {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    50% { transform: translateX(5px) rotate(2deg); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes caer {
+    to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 }
