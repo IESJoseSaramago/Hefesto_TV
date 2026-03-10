@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEFESTO TV | El Foro del Olimpo</title>
+    <link rel="stylesheet" href="ForoStyle.css"> 
+</head>
+<body>
+
+<header> 
+    <button class="open-btn" onclick="openNav()">☰</button>
+
+    <div class="header-top">
+        <div class="logo-title">HEFESTO TV</div>
+    </div>
+    
+    <nav class="main-navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="noticias.html">TODAS LAS NOTICIAS</a></li>
+            <li><a href="multimedia.html">MULTIMEDIA</a></li>
+            <li><a href="novedades.html">NOVEDADES</a></li>
+            <li><a href="Acercadenosotros.html">ACERCA DE NOSOTROS</a></li>
+            <li><a href="foro.html">THREAD OLIMPICO</a></li>
+            <li><a href="enlace_museo.html">MUSEO INMERSIVO</a></li>
+            <li><a href="https://ro.blox.com/Ebh5?af_dp=roblox%3A%2F%2Fnavigation%2Fgame_details%3FgameId%3D2392548311">VIDEOJUEGO HÉRCULES</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <h3 style="color:var(--gold-hefesto); padding-left:25px;">COMUNIDADES</h3>
+    <a href="#" onclick="cambiarHilo('ForoGeneral', 'Olimpo Reddit')">🏛️ Foro General</a>
+    <a href="#" onclick="cambiarHilo('Zeus', 'Liadas de Zeus')">⚡ Liadas de Zeus</a>
+    <a href="#" onclick="cambiarHilo('Mejoras', 'Hefesto TV: Mejoras')">⚒️ Hefesto TV: Mejoras</a>
+    <a href="#" onclick="cambiarHilo('Mar', 'Crónicas del Mar')">🔱 Crónicas del Mar</a>
+    <a href="#" onclick="cambiarHilo('Mestizo', 'Campamento Mestizo')">🌿 Campamento Mestizo</a>
+    <a href="#" onclick="cambiarHilo('Roma', 'Nueva Roma')">🏛️ Nueva Roma</a>
+    <a href="#" onclick="cambiarHilo('Monstruos', 'Avistamiento de Monstruos')">🐍 Avistamiento de Monstruos</a>
+</div>
+
+<main id="olimpo-feed">
+    <div class="foro-header">
+        <h1 id="nombre-hilo">🏛️ Olimpo Reddit</h1>
+        <p>Donde los hilos se entrelazan por voluntad divina.</p>
+    </div>
+
+    <div id="login-area">
+        <h3>Identifícate para participar</h3>
+        <input type="text" id="username" placeholder="Tu nombre de usuario...">
+        <select id="god-select">
+            <optgroup label="--- OLÍMPICOS ---">
+                <option value="⚡">Zeus (Rayo)</option>
+                <option value="🔱">Poseidón (Tridente)</option>
+                <option value="🦉">Atenea (Búho)</option>
+                <option value="🏹">Artemisa (Arco)</option>
+                <option value="☀️">Apolo (Sol)</option>
+                <option value="⚒️">Hefesto (Mazo)</option>
+                <option value="🍷">Dioniso (Uvas)</option>
+                <option value="💀">Hades (Cráneo)</option>
+                <option value="🕊️">Afrodita (Paloma)</option>
+                <option value="⚔️">Ares (Espada)</option>
+                <option value="🦚">Hera (Pavo Real)</option>
+                <option value="🌾">Deméter (Trigo)</option>
+                <option value="👟">Hermes (Sandalia)</option>
+            </optgroup>
+            <optgroup label="--- HÉROES Y CRIATURAS ---">
+                <option value="👤">Semidiós (Héroe)</option>
+                <option value="🐐">Sátiro (Protector)</option>
+                <option value="🌿">Ninfa (Naturaleza)</option>
+                <option value="🐴">Centauro (Guerrero)</option>
+            </optgroup>
+            <optgroup label="--- MONSTRUOS ---">
+                <option value="🕷️">Aracne (Tejedora)</option>
+                <option value="🐍">Medusa (Gorgona)</option>
+                <option value="🐮">Minotauro (Laberinto)</option>
+                <option value="🐕">Cerbero (Guardián)</option>
+                <option value="🦁">Quimera (Híbrido)</option>
+                <option value="🔥">Fénix (Renacido)</option>
+            </optgroup>
+        </select>
+        <button class="btn-divino" onclick="login()">Entrar al Olimpo</button>
+    </div>
+
+    <div id="comment-area" style="display:none;">
+        <p>Publicando en <span id="hilo-actual-label" style="color:var(--gold-hefesto)">Foro General</span> como: <span id="display-name" style="font-weight:bold;"></span></p>
+        <textarea id="comment-text" placeholder="¿Qué chisme tienes hoy?"></textarea>
+        <button class="btn-divino" onclick="enviarComentario()">POSTEAR</button>
+    </div>
+
+    <div id="feed-container"></div>
+</main>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC0HLsxt11ew-eI165MCBEEUGR9LrVsxm4",
+        authDomain: "hefesto-tv-social.firebaseapp.com",
+        projectId: "hefesto-tv-social",
+        storageBucket: "hefesto-tv-social.firebasestorage.app",
+        messagingSenderId: "619493008923",
+        appId: "1:619493008923:web:637c0cc83678006789fabe",
+        measurementId: "G-2E2SDFR7JM"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let currentUser = "";
+    let userEmoji = "👤";
+    let currentCollection = "ForoGeneral"; // Hilo por defecto al empezar
+    let unsubscribe = null; // Para limpiar la escucha de Firebase al cambiar de hilo
+
+    const getColorByGod = (emoji) => {
+        const colors = {
+            "⚡": "#FFD700", "🔱": "#0077be", "🦉": "#C0C0C0", "🏹": "#228B22",
+            "☀️": "#FFA500", "⚒️": "#FF4500", "🍷": "#800080", "💀": "#4B0082",
+            "🕊️": "#FFB6C1", "⚔️": "#B22222", "🦚": "#40E0D0", "🌾": "#F0E68C", "👟": "#ADD8E6",
+            "👤": "#9b59b6", "🐐": "#795548", "🌿": "#2ecc71", "🐴": "#e67e22",
+            "🕷️": "#000000", "🐍": "#2d5a27", "🐮": "#5d4037", "🐕": "#b71c1c", "🦁": "#f44336", "🔥": "#ff5722"
+        };
+        return colors[emoji] || "#ffb100";
+    };
+    
+    // Función para cambiar de hilo
+    window.cambiarHilo = (idColeccion, nombreVisible) => {
+        currentCollection = idColeccion;
+        document.getElementById('nombre-hilo').innerText = nombreVisible;
+        document.getElementById('hilo-actual-label').innerText = nombreVisible;
+        escucharMensajes(); // Reiniciar la escucha con la nueva colección
+        closeNav(); // Cerrar el menú lateral
+    };
+
+    window.login = () => {
+        const name = document.getElementById('username').value;
+        const selectedEmoji = document.getElementById('god-select').value;
+        if(name) {
+            currentUser = name;
+            userEmoji = selectedEmoji;
+            document.getElementById('login-area').style.display = 'none';
+            document.getElementById('comment-area').style.display = 'block';
+            const display = document.getElementById('display-name');
+            display.innerText = `${userEmoji} ${name}`;
+            display.style.color = getColorByGod(userEmoji);
+        }
+    };
+
+    window.enviarComentario = async () => {
+        const text = document.getElementById('comment-text').value;
+        if(text && currentUser) {
+            await addDoc(collection(db, currentCollection), {
+                usuario: currentUser,
+                emoji: userEmoji,
+                texto: text,
+                fecha: serverTimestamp()
+            });
+            document.getElementById('comment-text').value = ""; 
+        }
+    };
+
+    // Función principal para leer los mensajes
+    const escucharMensajes = () => {
+        // Si ya estábamos escuchando un hilo, dejamos de hacerlo para no mezclar datos
+        if (unsubscribe) unsubscribe();
+
+        const q = query(collection(db, currentCollection), orderBy("fecha", "desc"));
+        unsubscribe = onSnapshot(q, (snapshot) => {
+            const container = document.getElementById('feed-container');
+            container.innerHTML = ""; 
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                const color = getColorByGod(data.emoji);
+                container.innerHTML += `
+                    <div class="post" style="border-left: 6px solid ${color};">
+                        <strong style="color: ${color};">${data.emoji} @${data.usuario}:</strong>
+                        <p style="margin-top: 10px;">${data.texto}</p>
+                    </div>`;
+            });
+        });
+    };
+
+    // Iniciamos la escucha por primera vez (General)
+    escucharMensajes();
+
+    window.openNav = () => document.getElementById("mySidebar").style.width = "280px";
+    window.closeNav = () => document.getElementById("mySidebar").style.width = "0";
+</script>
+    <button id="boton-subir" class="columna-subir" onclick="derrumbarYSubir()">
+<div class="columna-icon-wrapper">
+<span class="columna-emoji">🏛️</span>
+</div>
+<span class="texto-columna">SUBIR</span>
+</button>
+<script src="script.js"></script>
+</body>
+</html>

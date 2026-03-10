@@ -1,0 +1,271 @@
+:root {
+    --bg-dark: #030303;
+    --card-bg: #d6e69d;
+    --input-bg: #272729;
+    --gold-hefesto: #ffb100;
+    --border-color: #343536;
+    
+    --color-acento-naranja: #ff4500;
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-main);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.logo-title {
+    font-family: var(--fuente-sans);
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* Contenedor Sticky de Navegación */
+.main-navigation {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom: 4px solid var(--color-acento-naranja); /* Línea naranja total */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1.2rem;
+    padding: 0.8rem 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-family: var(--fuente-sans);
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.5rem 0.8rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-acento-naranja);
+    background-color: rgba(255, 69, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* 4. NAVEGACIÓN HORIZONTAL (Corregido) */
+.main-navigation {
+    background-color: white;
+    border-top: 1px solid var(--color-gris-claro);
+    border-bottom: 4px solid var(--color-acento-naranja); 
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;          /* Esto alinea el menú en horizontal */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    margin: 0;
+}
+
+.nav-links a {
+    font-family: var(--fuente-sans);
+    color: var(--color-acento-principal);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-acento-naranja);
+}
+
+/* --- BOTÓN HAMBURGUESA (UBICACIÓN EXACTA) --- */
+/* --- BOTÓN HAMBURGUESA (AHORA A LA DERECHA) --- */
+.open-btn {
+    font-size: 28px;
+    cursor: pointer;
+    background: none;
+    color: black;
+    border: none;
+    position: absolute; /* Se mantiene en el header */
+    top: 15px; 
+    right: 20px; /* Cambiado de left a right */
+    z-index: 1001;
+    transition: 0.3s;
+}
+
+.open-btn:hover {
+    color: var(--color-acento-naranja);
+    transform: scale(1.1);
+}
+
+
+
+/* --- SIDEBAR --- */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: var(--card-bg);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818384;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover { color: var(--gold-hefesto); background: #272729; }
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* --- FORO FEED --- */
+#olimpo-feed {
+    max-width: 750px;
+    margin: 60px auto 40px auto; 
+    padding: 20px;
+}
+
+.foro-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.foro-header h1 { 
+    color: var(--gold-hefesto); 
+    font-size: 3em; 
+    margin: 0;
+}
+
+#login-area, #comment-area {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    background: var(--input-bg);
+    color: white;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.btn-divino {
+    width: 100%;
+    background: var(--gold-hefesto);
+    color: black;
+    border: none;
+    padding: 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.post {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+
+/* Animación */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }.columna-subir {
+position: fixed !important;
+bottom: 50px !important;
+right: 30px !important;
+background: none !important;
+border: none !important;
+cursor: pointer;
+display: flex !important;
+flex-direction: column;
+align-items: center;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.5s, transform 0.3s;
+z-index: 10000;
+}
+
+.columna-subir.mostrar {
+opacity: 1 !important;
+visibility: visible !important;
+}
+
+.columna-emoji {
+font-size: 45px;
+filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
+}
+
+.texto-columna {
+color: #ffd700 !important;
+font-size: 12px !important;
+font-family: 'Cinzel', serif;
+font-weight: bold;
+text-transform: uppercase;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.derrumbe {
+animation: temblor 0.5s linear, caer 0.8s forwards !important;
+}
+
+@keyframes temblor {
+0% { transform: translateX(0); }
+25% { transform: translateX(-5px) rotate(-2deg); }
+50% { transform: translateX(5px) rotate(2deg); }
+100% { transform: translateX(0); }
+}
+
+@keyframes caer {
+to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+}
