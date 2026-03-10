@@ -141,13 +141,143 @@
 
     </main>
     
-    <footer>
-    </footer>
+   
     <button id="boton-subir" class="columna-subir" onclick="derrumbarYSubir()">
 <div class="columna-icon-wrapper">
 <span class="columna-emoji">🏛️</span>
 </div>
 <span class="texto-columna">SUBIR</span>
 </button><script src="script.js"></script>
+<section id="olimpo-feed">
+    <h2>🏛️ El Foro de los Dioses</h2>
+    
+    <div id="login-area">
+        <input type="text" id="username" placeholder="Tu nombre divino o mortal...">
+        
+        <select id="god-select">
+            <optgroup label="--- OLÍMPICOS ---">
+                <option value="⚡">Zeus (Rayo)</option>
+                <option value="🔱">Poseidón (Tridente)</option>
+                <option value="🦉">Atenea (Búho)</option>
+                <option value="🏹">Artemisa (Arco)</option>
+                <option value="☀️">Apolo (Sol)</option>
+                <option value="⚒️">Hefesto (Mazo)</option>
+                <option value="🍷">Dioniso (Uvas)</option>
+                <option value="💀">Hades (Cráneo)</option>
+                <option value="🕊️">Afrodita (Paloma)</option>
+                <option value="⚔️">Ares (Espada)</option>
+                <option value="🦚">Hera (Pavo Real)</option>
+                <option value="🌾">Deméter (Trigo)</option>
+                <option value="👟">Hermes (Sandalia)</option>
+            </optgroup>
+            <optgroup label="--- HÉROES Y CRIATURAS ---">
+                <option value="👤">Semidiós (Héroe)</option>
+                <option value="🐐">Sátiro (Protector)</option>
+                <option value="🌿">Ninfa (Naturaleza)</option>
+                <option value="🐴">Centauro (Guerrero)</option>
+            </optgroup>
+            <optgroup label="--- MONSTRUOS ---">
+                <option value="🕷️">Aracne (Tejedora)</option>
+                <option value="🐍">Medusa (Gorgona)</option>
+                <option value="🐮">Minotauro (Laberinto)</option>
+                <option value="🐕">Cerbero (Guardián)</option>
+                <option value="🦁">Quimera (Híbrido)</option>
+                <option value="🔥">Fénix (Renacido)</option>
+            </optgroup>
+        </select>
+
+        <button onclick="login()">Entrar al Olimpo</button>
+    </div>
+
+    <div id="comment-area" style="display:none;">
+        <p>Conectado como: <span id="display-name" style="font-weight:bold;"></span></p>
+        <textarea id="comment-text" placeholder="¿Qué chisme tienes hoy?"></textarea>
+        <button onclick="enviarComentario()">Publicar en el Feed</button>
+    </div>
+
+    <div id="feed-container"></div>
+</section>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC0HLsxt11ew-eI165MCBEEUGR9LrVsxm4",
+        authDomain: "hefesto-tv-social.firebaseapp.com",
+        projectId: "hefesto-tv-social",
+        storageBucket: "hefesto-tv-social.firebasestorage.app",
+        messagingSenderId: "619493008923",
+        appId: "1:619493008923:web:637c0cc83678006789fabe",
+        measurementId: "G-2E2SDFR7JM"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let currentUser = "";
+    let userEmoji = "👤";
+
+    // DICCIONARIO DE COLORES DIVINOS Y MONSTRUOSOS
+    const getColorByGod = (emoji) => {
+        const colors = {
+            // Dioses
+            "⚡": "#FFD700", "🔱": "#0077be", "🦉": "#C0C0C0", "🏹": "#228B22",
+            "☀️": "#FFA500", "⚒️": "#FF4500", "🍷": "#800080", "💀": "#4B0082",
+            "🕊️": "#FFB6C1", "⚔️": "#B22222", "🦚": "#40E0D0", "🌾": "#F0E68C", "👟": "#ADD8E6",
+            // Héroes/Criaturas
+            "👤": "#9b59b6", "🐐": "#795548", "🌿": "#2ecc71", "🐴": "#e67e22",
+            // Monstruos
+            "🕷️": "#000000", "🐍": "#2d5a27", "🐮": "#5d4037", "🐕": "#b71c1c", "🦁": "#f44336", "🔥": "#ff5722"
+        };
+        return colors[emoji] || "#ffb100";
+    };
+
+    window.login = () => {
+        const name = document.getElementById('username').value;
+        const selectedEmoji = document.getElementById('god-select').value;
+        
+        if(name) {
+            currentUser = name;
+            userEmoji = selectedEmoji;
+            document.getElementById('login-area').style.display = 'none';
+            document.getElementById('comment-area').style.display = 'block';
+            document.getElementById('display-name').innerText = `${userEmoji} ${name}`;
+            document.getElementById('display-name').style.color = getColorByGod(userEmoji);
+        }
+    };
+
+    window.enviarComentario = async () => {
+        const text = document.getElementById('comment-text').value;
+        if(text && currentUser) {
+            await addDoc(collection(db, "Hercules"), {
+                usuario: currentUser,
+                emoji: userEmoji,
+                texto: text,
+                fecha: serverTimestamp()
+            });
+            document.getElementById('comment-text').value = ""; 
+        }
+    };
+
+    const q = query(collection(db, "Hercules"), orderBy("fecha", "desc"));
+    
+    onSnapshot(q, (snapshot) => {
+        const container = document.getElementById('feed-container');
+        container.innerHTML = ""; 
+        
+        snapshot.forEach((doc) => {
+            const data = doc.data();
+            const godColor = getColorByGod(data.emoji);
+            
+            container.innerHTML += `
+                <div class="post" style="background: #272729; border-left: 6px solid ${godColor}; border-top: 1px solid #343536; border-right: 1px solid #343536; border-bottom: 1px solid #343536; margin-top: 15px; padding: 15px; border-radius: 8px; color: white; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                    <strong style="color: ${godColor}; font-size: 1.1em;">${data.emoji || '👤'} @${data.usuario}:</strong>
+                    <p style="margin: 8px 0 0 0; color: #d7dadc; line-height: 1.4;">${data.texto}</p>
+                </div>
+            `;
+        });
+    });
+</script>
 </body>
 </html>
