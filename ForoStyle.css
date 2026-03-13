@@ -114,11 +114,9 @@ header {
     background: none;
     color: black;
     border: none;
-    position: absolute; /* Se mantiene en el header */
-    top: 15px; 
-    right: 20px; /* Cambiado de left a right */
-    z-index: 1001;
-    transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 20px;     /* 5. CAMBIO: De left:20px a right:20px */
 }
 
 .open-btn:hover {
@@ -128,21 +126,21 @@ header {
 
 
 
-/* --- SIDEBAR --- */
 .sidebar {
     height: 100%;
-    width: 0;
+    width: 0; /* Empieza cerrado */
     position: fixed;
     z-index: 2000;
     top: 0;
-    left: 0;
+    right: 0;         /* 1. CAMBIO: De left:0 a right:0 */
+    left: auto;       /* 2. CAMBIO: Forzamos que no se pegue a la izquierda */
     background-color: var(--card-bg);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    border-right: 1px solid var(--border-color);
+    border-left: 2px solid var(--gold-hefesto); /* 3. CAMBIO: Borde en la izquierda del menú */
+    border-right: none;
 }
-
 .sidebar a {
     padding: 15px 25px;
     text-decoration: none;
@@ -156,9 +154,10 @@ header {
 
 .sidebar .closebtn {
     position: absolute;
-    top: 10px;
-    right: 25px;
+    top: 0;
+    left: 25px;      /* 4. CAMBIO: Ahora la X debe estar a la izquierda del panel */
     font-size: 36px;
+    margin-right: 0;
 }
 
 /* --- FORO FEED --- */
@@ -268,4 +267,7 @@ animation: temblor 0.5s linear, caer 0.8s forwards !important;
 
 @keyframes caer {
 to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+}
+.alert_text ¨{
+    font-style: var(--card-bg);
 }
