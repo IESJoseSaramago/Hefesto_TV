@@ -1,0 +1,52 @@
+<script> // 1. Diccionario de imágenes (Asegúrate de tener estas imágenes en tu carpeta)
+const imagenesMateriales = {
+    'Manzanas de oro': 'img/manzana.png',
+    'Sandalias aladas': 'img/sandalias.png',
+    'El gran oraculo': 'img/oraculo.png'
+};
+
+function recogerItem(nombre) {
+    let inventario = JSON.parse(localStorage.getItem('inventarioHefesto')) || [];
+
+    if (!inventario.includes(nombre)) {
+        inventario.push(nombre);
+        localStorage.setItem('inventarioHefesto', JSON.stringify(inventario));
+        
+        // Notificación personalizada (puedes quitar el alert si prefieres algo más sutil)
+        alert(`¡Has obtenido: ${nombre}! Se ha añadido a tu fragua.`);
+    } else {
+        alert("Ese material ya está en tu poder, héroe.");
+    }
+
+    actualizarContador(); // Actualizamos visualmente
+    verificarRecompensa(inventario);
+}
+
+function actualizarContador() {
+    let inventario = JSON.parse(localStorage.getItem('inventarioHefesto')) || [];
+    
+    // Actualizar el número
+    const numItems = document.getElementById('num-items');
+    if(numItems) numItems.innerText = inventario.length;
+
+    // Actualizar las imágenes
+    const contenedorImagenes = document.getElementById('imagenes-inventario');
+    if(contenedorImagenes) {
+        contenedorImagenes.innerHTML = ''; // Limpiamos para redibujar
+        
+        inventario.forEach(item => {
+            const img = document.createElement('img');
+            img.src = imagenesMateriales[item]; // Busca la ruta en el diccionario
+            img.alt = item;
+            img.title = item; // Muestra el nombre al pasar el ratón
+            img.style = "width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 0 5px #ff4500);";
+            contenedorImagenes.appendChild(img);
+        });
+    }
+}
+
+// Asegurarnos de que el contador se vea bien al cargar la página
+window.onload = function() {
+    actualizarContador();
+};
+</script>
