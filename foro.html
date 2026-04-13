@@ -10,11 +10,9 @@
 
 <header> 
     <button class="open-btn" onclick="openNav()">☰</button>
-
     <div class="header-top">
         <div class="logo-title">HEFESTO TV</div>
     </div>
-    
     <nav class="main-navigation">
         <ul class="nav-links">
             <li><a href="index.html">INICIO</a></li>
@@ -39,14 +37,14 @@
     <a href="#" onclick="cambiarHilo('Mestizo', 'Campamento Mestizo')">🌿 Campamento Mestizo</a>
     <a href="#" onclick="cambiarHilo('Roma', 'Nueva Roma')">🏛️ Nueva Roma</a>
     <a href="#" onclick="cambiarHilo('Monstruos', 'Avistamiento de Monstruos')">🐍 Avistamiento de Monstruos</a>
-    <a href="#" onclick="cambiarHilo('Troya', ' Segimos en Troya')"> 🍎 Seguimos en Troya </a>
+    <a href="#" onclick="cambiarHilo('Troya', ' Seguimos en Troya')"> 🍎 Seguimos en Troya </a>
 </div>
-<main id="olimpo-feed"><main id="olimpo-feed">
+
+<main id="olimpo-feed">
     <div id="system-alert" style="display:none; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-family: monospace; font-size: 0.9em;">
         <span id="alert-text"></span>
     </div>
 
-    
     <div class="foro-header">
         <h1 id="nombre-hilo">El gran OLIMPO </h1>
         <p>Donde los hilos se entrelazan por voluntad divina.</p>
@@ -90,7 +88,7 @@
     </div>
 
    <div id="comment-area" style="display:none;">
-    <p>Publicando en <span id="hilo-actual-label" style="color:var(--gold-hefesto)">Foro General</span> como: <span id="display-name" style="font-weight:bold;"></span></p>
+    <p>Publicando en <span id="hilo-actual-label" style="color:var(--gold-hefesto)">El gran Olimpo</span> como: <span id="display-name" style="font-weight:bold;"></span></p>
     
     <textarea id="comment-text" placeholder="¿Qué chisme tienes hoy?"></textarea>
 
@@ -135,21 +133,14 @@
         return colors[emoji] || "#ffb100";
     };
 
-    // DICCIONARIO DE MENSAJES PREDETERMINADOS (CON LINKS DE MEMES)
+    // REAÑADIDO: Diccionario de mensajes prediseñados (coincidiendo con los nombres de colección)
     const mensajesFamosos = {
-        "S": [
-            { emoji: "🦚", usuario: "Reina_Del_Cielo", color: "#40E0D0", texto: "¡Zeus! Más te vale que este hilo no sea lo que creo. Mis pavos reales están vigilando.", multimedia: "https://i.pinimg.com/originals/de/21/72/de217208d1f887756f1406606001d8f3.jpg" },
+        "ForoGeneral": [
+            { emoji: "🦚", usuario: "Reina_Del_Cielo", color: "#40E0D0", texto: "¡Zeus! Más te vale que este hilo no sea lo que creo...", multimedia: "https://i.pinimg.com/originals/de/21/72/de217208d1f887756f1406606001d8f3.jpg" },
             { emoji: "⚡", usuario: "Zeus_Oficial", color: "#FFD700", texto: "Hera, querida, es solo... divulgación histórica. ⚡😇" }
         ],
-        "Mes": [
-            { emoji: "⚒️", usuario: "Maestro_De_La_Fragua", color: "#FF4500", texto: "He instalado un filtro anti-monstruos. Si el foro explota, es que el filtro funciona.", multimedia: "https://i.pinimg.com/736x/8a/7e/61/8a7e61a6b0c03472097e6804566c5d64.jpg" }
-        ],
-        "al": [
-            { emoji: "🔱", usuario: "Persassy_Jackson", color: "#0077be", texto: "He vuelto a perder mi bolígrafo. Si alguien encuentra una espada de bronce en el sofá, es mía.", multimedia: "https://i.pinimg.com/originals/81/13/6a/81136a836263546700c1404097475704.jpg" },
-            { emoji: "🦉", usuario: "WiseGirl_Architecture", color: "#C0C0C0", texto: "Percy, deja de perder tus armas. He publicado un mapa con 457 salidas de emergencia del Olimpo." }
-        ],
-        "": [
-            { emoji: "🦁", usuario: "Tres_En_Uno_Oficial", color: "#e67e22", texto: "¡Sacad mi perfil bueno! La cabeza de león manda. 🦁🐐🐍", multimedia: "https://i.pinimg.com/736x/01/95/86/01958643033501099658e4d1f2735f3d.jpg" }
+        "Mar": [
+            { emoji: "🔱", usuario: "Persassy_Jackson", color: "#0077be", texto: "He vuelto a perder mi bolígrafo. Si alguien encuentra una espada, es mía.", multimedia: "https://i.pinimg.com/originals/81/13/6a/81136a836263546700c1404097475704.jpg" }
         ]
     };
     
@@ -163,10 +154,7 @@
         
         if (idColeccion === 'Zeus') {
             alertBox.style.display = 'block';
-            alertBox.style.borderColor = '#d6e69d';
-            let m1 = "⚠️ <strong>[SISTEMA]:</strong> Se han detectado 47 intentos de borrado por parte de '@Hera_Queen'.";
-            let m2 = "<div style='margin-top:10px;'>🛠️ <strong>[NOTIFICACIÓN]:</strong> El usuario '@Hefesto_IronMaster' ha denegado a @Hera_Queen el permiso de administrador.</div>";
-            alertText.innerHTML = m1 + m2;
+            alertText.innerHTML = "⚠️ [SISTEMA]: Se han detectado intentos de borrado por parte de '@Hera_Queen'.";
         } else {
             alertBox.style.display = 'none';
         }
@@ -193,15 +181,20 @@
         const urlMedia = document.getElementById('comment-url').value;
         
         if(text && currentUser) {
-            await addDoc(collection(db, currentCollection), {
-                usuario: currentUser,
-                emoji: userEmoji,
-                texto: text,
-                multimedia: urlMedia,
-                fecha: serverTimestamp()
-            });
-            document.getElementById('comment-text').value = ""; 
-            document.getElementById('comment-url').value = ""; 
+            try {
+                await addDoc(collection(db, currentCollection), {
+                    usuario: currentUser,
+                    emoji: userEmoji,
+                    texto: text,
+                    multimedia: urlMedia,
+                    fecha: serverTimestamp()
+                });
+                document.getElementById('comment-text').value = ""; 
+                document.getElementById('comment-url').value = ""; 
+            } catch (e) {
+                console.error("Error al enviar: ", e);
+                alert("Error al enviar mensaje. Revisa las reglas de Firestore.");
+            }
         }
     };
 
@@ -213,13 +206,10 @@
             const container = document.getElementById('feed-container');
             container.innerHTML = ""; 
 
-            // 1. PREDETERMINADOS
+            // 1. PREDETERMINADOS (Si existen para este hilo)
             if (mensajesFamosos[currentCollection]) {
                 mensajesFamosos[currentCollection].forEach(msg => {
-                    let media = "";
-                    if (msg.multimedia) {
-                        media = `<img src="${msg.multimedia}" style="max-width:100%; border-radius:8px; margin-top:10px; border: 1px solid #ffb100;">`;
-                    }
+                    let media = msg.multimedia ? `<img src="${msg.multimedia}" style="max-width:100%; border-radius:8px; margin-top:10px; border: 1px solid #ffb100;">` : "";
                     container.innerHTML += `
                         <div class="post" style="border-left: 6px solid ${msg.color}; background: rgba(255,255,255,0.05);">
                             <strong style="color: ${msg.color};">${msg.emoji} @${msg.usuario}:</strong>
@@ -230,7 +220,7 @@
                 });
             }
 
-            // 2. REALES
+            // 2. REALES DESDE FIREBASE
             snapshot.forEach((doc) => {
                 const data = doc.data();
                 const color = getColorByGod(data.emoji);
@@ -238,10 +228,10 @@
 
                 if (data.multimedia) {
                     if (data.multimedia.includes("youtube.com") || data.multimedia.includes("youtu.be")) {
-                        const vidId = data.multimedia.split('v=')[1] || data.multimedia.split('/').pop();
+                        const vidId = data.multimedia.split('v=')[1]?.split('&')[0] || data.multimedia.split('/').pop();
                         mediaHTML = `<iframe width="100%" height="250" src="https://www.youtube.com/embed/${vidId}" frameborder="0" allowfullscreen style="margin-top:10px; border-radius:8px;"></iframe>`;
                     } 
-                    else if (data.multimedia.match(/\.(jpeg|jpg|gif|png|webp)$/) != null) {
+                    else if (data.multimedia.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
                         mediaHTML = `<img src="${data.multimedia}" style="max-width:100%; border-radius:8px; margin-top:10px; border: 1px solid #444;">`;
                     }
                     else {
@@ -256,19 +246,25 @@
                         ${mediaHTML}
                     </div>`;
             });
+        }, (error) => {
+            console.error("Error en tiempo real: ", error);
         });
     };
 
-    escucharMensajes();
+    // Funciones globales
     window.openNav = () => document.getElementById("mySidebar").style.width = "280px";
     window.closeNav = () => document.getElementById("mySidebar").style.width = "0";
+
+    // Iniciar el feed al cargar
+    escucharMensajes();
 </script>
-    <button id="boton-subir" class="columna-subir" onclick="derrumbarYSubir()">
-<div class="columna-icon-wrapper">
-<span class="columna-emoji">🏛️</span>
-</div>
-<span class="texto-columna">SUBIR</span>
+
+<button id="boton-subir" class="columna-subir" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <div class="columna-icon-wrapper">
+        <span class="columna-emoji">🏛️</span>
+    </div>
+    <span class="texto-columna">SUBIR</span>
 </button>
-<script src="script.js"></script>
+
 </body>
 </html>
