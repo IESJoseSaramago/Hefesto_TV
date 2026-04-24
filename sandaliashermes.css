@@ -1,35 +1,55 @@
 .hermes-container {
-    position: fixed;
-    bottom: 20px;
-    right: -300px; /* Empieza fuera de la pantalla */
     display: flex;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #ffd700; /* Color oro */
-    padding: 10px 20px;
-    border-radius: 50px;
-    transition: right 1s ease-in-out;
-    z-index: 1000;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #d4af37;
+    border-radius: 50px 15px 15px 50px;
+    position: fixed;
+    bottom: 30px;
+    right: -500px; /* Escondido al inicio */
+    transition: right 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10000;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    backdrop-filter: blur(5px); /* Efecto cristal elegante */
 }
 
 .hermes-container.visible {
-    right: 20px; /* Se desliza hacia adentro */
+    right: 20px;
 }
 
-.talaria-icon {
-    width: 40px;
-    animation: aleteo 0.5s infinite alternate ease-in-out;
+.hermes-img-wrapper {
+    width: 60px; /* Un poco más grande para que luzca */
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: vueloEpico 3s ease-in-out infinite;
+}
+
+.sandalia-epica {
+    width: 100%;
+    height: auto;
+    /* Resplandor dorado alrededor de tu imagen */
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+}
+
+@keyframes vueloEpico {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-12px) rotate(4deg); }
 }
 
 .mensaje-hermes {
-    color: #ffd700;
-    margin-left: 10px;
-    font-family: 'Cinzel', serif; /* O la fuente que uses en Hefesto TV */
     font-weight: bold;
+    color: #8b6b10;
+    font-size: 17px;
+    white-space: nowrap;
+    font-family: 'Georgia', serif;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
-/* Animación de vuelo */
-@keyframes aleteo {
-    from { transform: translateY(0) rotate(-5deg); }
-    to { transform: translateY(-10px) rotate(5deg); }
+#enlace-hermes {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }

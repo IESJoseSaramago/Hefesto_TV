@@ -1,31 +1,30 @@
-window.onscroll = function() {
+window.addEventListener('scroll', function() {
     const boton = document.getElementById("boton-subir");
-    if (boton) {
-        if (document.documentElement.scrollTop > 200) {
-            boton.classList.add("mostrar");
-        } else {
-            boton.classList.remove("mostrar");
-        }
+    
+    // Solo si bajamos más de 100px, aparece
+    if (window.scrollY > 100) {
+        boton.classList.add("visible");
+    } else {
+        boton.classList.remove("visible");
     }
-};
+});
 
 function derrumbarYSubir() {
-    const boton = document.getElementById("boton-subir");
-    if (!boton) return;
-
-    // Efecto de metal caliente
-    boton.style.filter = "drop-shadow(0 0 20px #ff4500) brightness(1.5)";
-    
-    setTimeout(() => {
-        boton.classList.add("derrumbe");
-        
-        setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 400);
-
-        setTimeout(() => {
-            boton.classList.remove("derrumbe");
-            boton.style.filter = ""; 
-        }, 1200);
-    }, 200);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function mostrarNotificacionHermes() {
+    const notif = document.getElementById('hermes-notificacion');
+    const sonido = document.getElementById('sonido-hermes');
+    
+    // Aparece después de 3 segundos
+    setTimeout(() => {
+        if (notif) {
+            notif.classList.add('visible');
+            // El sonido solo suena si has hecho clic antes en la página (regla de navegadores)
+            sonido.play().catch(e => console.log("Audio esperando interacción"));
+        }
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', mostrarNotificacionHermes);
