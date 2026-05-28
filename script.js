@@ -28,3 +28,4 @@ function mostrarNotificacionHermes() {
 }
 
 document.addEventListener('DOMContentLoaded', mostrarNotificacionHermes);
+

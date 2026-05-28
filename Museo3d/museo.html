@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Museo 3D - Hefesto TV</title>
+    <link rel="stylesheet" href="museo.css">
     <style>
         body { margin: 0; overflow: hidden; background-color: #000; }
         #unity-container { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
@@ -10,6 +11,19 @@
     </style>
 </head>
 <body>
+   <div id="welcome-overlay">
+    <div class="dialogue-container">
+        <img src="/img/hermesmuseo.jpg" alt="Guía Mitológico" class="character-img">
+        
+        <div class="text-box">
+            <h2>¡Bienvenido al Museo de Hefesto TV!</h2>
+            <p>Saludos, mortal. Soy tu guía en este recorrido. Para moverte por las salas del museo, utiliza las <strong>flechas del teclado</strong> o las teclas <strong>WASD</strong>.</p>
+            <p>Para interactuar con los cuadros y descubrir sus mitos, acércate a ellos y pulsa la tecla <strong>F12 y mira las propiedades de todas las grandes obras</strong> .</p>
+            
+            <button id="start-button" class="btn-mitologico">Comenzar Recorrido</button>
+        </div>
+    </div>
+</div>
     <div id="unity-container">
         <canvas id="unity-canvas"></canvas>
     </div>
@@ -25,6 +39,15 @@
             productName: "MuseoMitologia",
             productVersion: "0.1",
         });
+
+        document.getElementById('start-button').addEventListener('click', function() {
+    var overlay = document.getElementById('welcome-overlay');
+    overlay.style.opacity = '0';
+    setTimeout(function() {
+        overlay.style.display = 'none';
+    }, 500); // Espera a que termine la animación de opacidad para quitarlo del todo
+});
+
     </script>
 </body>
 </html>

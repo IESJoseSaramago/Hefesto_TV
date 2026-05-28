@@ -1,0 +1,57 @@
+/* Capa que cubre toda la pantalla por encima de Unity */
+#welcome-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.9); /* Fondo oscuro para resaltar al personaje */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Asegura que esté por encima del canvas de Unity */
+    transition: opacity 0.5s ease; /* Efecto de desvanecimiento al empezar */
+    font-family: 'Times New Roman', Times, serif; /* O la tipografía clásica de tu web */
+    color: #f0e6d2;
+}
+
+/* Contenedor del personaje y el texto */
+.dialogue-container {
+    display: flex;
+    max-width: 800px;
+    background: #1a1a1a;
+    border: 2px solid #d4af37; /* Borde dorado mitológico */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.character-img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.text-box h2 {
+    color: #d4af37;
+    margin-top: 0;
+}
+
+/* Botón con estilo clásico */
+.btn-mitologico {
+    background-color: #d4af37;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.btn-mitologico:hover {
+    background-color: #fff;
+}
