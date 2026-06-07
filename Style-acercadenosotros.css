@@ -168,4 +168,85 @@ animation: temblor 0.5s linear, caer 0.8s forwards !important;
 
 @keyframes caer {
 to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+}/* ===========================================
+    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
+   =========================================== */
+
+/* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
+@media (max-width: 992px) {
+    .logo-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    #hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .Chismesynoticiasdivinas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* --- Ajustes para Móviles (Pantallas menores a 600px) --- */
+@media (max-width: 600px) {
+    header {
+        padding: 1rem 0;
+    }
+
+    .logo-title {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.6rem 0.5rem;
+    }
+
+    .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    #hero {
+        min-height: 60vh;
+        padding: 1.5rem;
+    }
+
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    #Chismesynoticiasdivinas {
+        padding: 2rem 1rem;
+    }
+
+    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
+    .Chismesynoticiasdivinas-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
+    .columna-subir {
+        bottom: 30px !important;
+        right: 15px !important;
+    }
+
+    .columna-emoji {
+        font-size: 35px;
+    }
+
+    .texto-columna {
+        font-size: 10px !important;
+    }
+
+    footer {
+        padding: 2rem 1rem;
+    }
 }
