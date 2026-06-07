@@ -8,10 +8,12 @@
     position: fixed;
     bottom: 30px;
     right: -500px; /* Escondido al inicio */
-    transition: right 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: right 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), left 0.8s ease, bottom 0.8s ease; /* Añadidas transiciones para la adaptación móvil */
     z-index: 10000;
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
     backdrop-filter: blur(5px); /* Efecto cristal elegante */
+    max-width: 90%; /* Evita que en pantallas intermedias se desborde */
+    box-sizing: border-box;
 }
 
 .hermes-container.visible {
@@ -25,6 +27,7 @@
     align-items: center;
     justify-content: center;
     animation: vueloEpico 3s ease-in-out infinite;
+    flex-shrink: 0; /* Evita que la sandalia se aplaste si el texto es largo */
 }
 
 .sandalia-epica {
@@ -52,4 +55,40 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    width: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+/* =================================================
+    NUEVAS REGLAS RESPONSIVAS PARA EL AVISO DE HERMES
+   ================================================= */
+
+@media (max-width: 600px) {
+    .hermes-container {
+        /* En móviles cambia el diseño de cápsula estricto por uno centrado y simétrico */
+        border-radius: 25px; 
+        padding: 10px 15px;
+        width: 90%; /* Ocupa el ancho simétrico de la pantalla del móvil */
+        left: 50%; /* Truco para centrar */
+        transform: translateX(-50%); /* Centrado matemático perfecto */
+        bottom: -200px; /* Ahora se esconde hacia abajo en lugar de hacia la derecha */
+        right: auto !important; /* Desactivamos el comportamiento lateral de PC */
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Cuando esté visible en móvil, se eleva suavemente desde abajo */
+    .hermes-container.visible {
+        bottom: 20px; 
+        left: 50%;
+    }
+
+    .hermes-img-wrapper {
+        width: 45px; /* Reducción proporcional para pantallas compactas */
+        margin-right: 10px;
+    }
+
+    .mensaje-hermes {
+        font-size: 14px; /* Tamaño de lectura cómodo para móvil */
+        white-space: normal; /* PERMITE que el texto salte de línea si el aviso es largo */
+        line-height: 1.3;
+    }
 }

@@ -85,6 +85,7 @@ header {
     background-color: rgba(255, 69, 0, 0.1);
     border-radius: 4px;
 }
+
 /* --- 4. GRID DE NOTICIAS (3 Columnas) --- */
 .novedades-container {
     max-width: 1200px;
@@ -145,6 +146,7 @@ header {
     display: inline-block;
     width: fit-content;
 }
+
 .cta-button:hover, .Mito-card a:hover {
     background: linear-gradient(45deg, #ff4500, #ff8c00);
     transform: scale(1.05);
@@ -155,6 +157,7 @@ header {
     from { text-shadow: 0 0 10px var(--naranja-hefesto); }
     to { text-shadow: 0 0 25px #ff8c00, 0 0 40px var(--naranja-hefesto); }
 }
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
@@ -172,58 +175,60 @@ header {
     width: 100%;
     height: 100%;
 }
+
 .columna-subir {
-position: fixed !important;
-bottom: 50px !important;
-right: 30px !important;
-background: none !important;
-border: none !important;
-cursor: pointer;
-display: flex !important;
-flex-direction: column;
-align-items: center;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.5s, transform 0.3s;
-z-index: 10000;
+    position: fixed !important;
+    bottom: 50px !important;
+    right: 30px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.3s;
+    z-index: 10000;
 }
 
 .columna-subir.mostrar {
-opacity: 1 !important;
-visibility: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .columna-emoji {
-font-size: 45px;
-filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
+    font-size: 45px;
+    filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
 }
 
 .texto-columna {
-color: #ffd700 !important;
-font-size: 12px !important;
-font-family: 'Cinzel', serif;
-font-weight: bold;
-text-transform: uppercase;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffd700 !important;
+    font-size: 12px !important;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .derrumbe {
-animation: temblor 0.5s linear, caer 0.8s forwards !important;
+    animation: temblor 0.5s linear, caer 0.8s forwards !important;
 }
 
 @keyframes temblor {
-0% { transform: translateX(0); }
-25% { transform: translateX(-5px) rotate(-2deg); }
-50% { transform: translateX(5px) rotate(2deg); }
-100% { transform: translateX(0); }
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    50% { transform: translateX(5px) rotate(2deg); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes caer {
-to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+    to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 }
-/* ===========================================
-    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
-   =========================================== */
+
+/* =================================================
+    RESPONSIVE PARA MULTIMEDIA (TABLET Y MÓVIL)
+   ================================================= */
 
 /* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
 @media (max-width: 992px) {
@@ -232,13 +237,9 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         letter-spacing: 3px;
     }
 
-    #hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* Pasa de 3 a 2 columnas equilibradas */
+        gap: 20px;
     }
 }
 
@@ -254,7 +255,6 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         margin-bottom: 10px;
     }
 
-    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
     .nav-links {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -266,26 +266,20 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         padding: 0.4rem 0.6rem;
     }
 
-    #hero {
-        min-height: 60vh;
-        padding: 1.5rem;
+    .novedades-container {
+        margin: 20px auto;
+        padding: 0 15px;
     }
 
-    #hero h1 {
-        font-size: 2rem;
+    .news-grid {
+        grid-template-columns: 1fr; /* Una columna limpia para tarjetas y videos */
+        gap: 20px;
     }
 
-    #Chismesynoticiasdivinas {
-        padding: 2rem 1rem;
+    .news-image {
+        height: 180px; /* Reducción proporcional de imagen */
     }
 
-    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
     .columna-subir {
         bottom: 30px !important;
         right: 15px !important;
@@ -297,9 +291,5 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 
     .texto-columna {
         font-size: 10px !important;
-    }
-
-    footer {
-        padding: 2rem 1rem;
     }
 }

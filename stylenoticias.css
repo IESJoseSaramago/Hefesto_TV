@@ -180,56 +180,60 @@ main {
 
 .card-content a:hover {
     background-color: var(--color-acento-naranja);
-}.columna-subir {
-position: fixed !important;
-bottom: 50px !important;
-right: 30px !important;
-background: none !important;
-border: none !important;
-cursor: pointer;
-display: flex !important;
-flex-direction: column;
-align-items: center;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.5s, transform 0.3s;
-z-index: 10000;
+}
+
+.columna-subir {
+    position: fixed !important;
+    bottom: 50px !important;
+    right: 30px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.3s;
+    z-index: 10000;
 }
 
 .columna-subir.mostrar {
-opacity: 1 !important;
-visibility: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .columna-emoji {
-font-size: 45px;
-filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
+    font-size: 45px;
+    filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
 }
 
 .texto-columna {
-color: #ffd700 !important;
-font-size: 12px !important;
-font-family: 'Cinzel', serif;
-font-weight: bold;
-text-transform: uppercase;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffd700 !important;
+    font-size: 12px !important;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .derrumbe {
-animation: temblor 0.5s linear, caer 0.8s forwards !important;
+    animation: temblor 0.5s linear, caer 0.8s forwards !important;
 }
 
 @keyframes temblor {
-0% { transform: translateX(0); }
-25% { transform: translateX(-5px) rotate(-2deg); }
-50% { transform: translateX(5px) rotate(2deg); }
-100% { transform: translateX(0); }
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    50% { transform: translateX(5px) rotate(2deg); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes caer {
-to { transform: translateY(800px) rotate(90deg); opacity: 0; }
-}/* ===========================================
-    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
+    to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+}
+
+/* ===========================================
+    NUEVAS REGLAS RESPONSIVAS SEGUROS Y SIMÉTRICAS
    =========================================== */
 
 /* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
@@ -239,13 +243,10 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         letter-spacing: 3px;
     }
 
-    #hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+    /* Forzar un grid cómodo de dos columnas en pantallas medianas */
+    #Chismesynoticiasdivinas {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -261,7 +262,7 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         margin-bottom: 10px;
     }
 
-    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
+    /* Menú fluido para evitar scroll horizontal */
     .nav-links {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -273,26 +274,31 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         padding: 0.4rem 0.6rem;
     }
 
+    main {
+        padding: 10px;
+    }
+
     #hero {
-        min-height: 60vh;
-        padding: 1.5rem;
+        padding: 25px 15px;
+        margin: 20px auto;
     }
 
-    #hero h1 {
-        font-size: 2rem;
+    .titulo {
+        font-size: 1.5em;
     }
 
+    /* Corrección del ID: Fuerza una sola columna simétrica ocupando todo el ancho */
     #Chismesynoticiasdivinas {
-        padding: 2rem 1rem;
-    }
-
-    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
-    .Chismesynoticiasdivinas-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 20px;
+        padding: 10px 0;
     }
 
-    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
+    .Mito-card img {
+        height: 180px; /* Foto levemente más pequeña para pantallas compactas */
+    }
+
+    /* Ubicación segura de la columna flotante */
     .columna-subir {
         bottom: 30px !important;
         right: 15px !important;
@@ -304,9 +310,5 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 
     .texto-columna {
         font-size: 10px !important;
-    }
-
-    footer {
-        padding: 2rem 1rem;
     }
 }

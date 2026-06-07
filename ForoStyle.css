@@ -33,44 +33,6 @@ header {
 
 /* Contenedor Sticky de Navegación */
 .main-navigation {
-    background-color: #f8f9fa;
-    border-top: 1px solid #ddd;
-    border-bottom: 4px solid var(--color-acento-naranja); /* Línea naranja total */
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 1.2rem;
-    padding: 0.8rem 0;
-    margin: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #444;
-    font-family: var(--fuente-sans);
-    font-size: 0.85rem;
-    font-weight: bold;
-    padding: 0.5rem 0.8rem;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--color-acento-naranja);
-    background-color: rgba(255, 69, 0, 0.1);
-    border-radius: 4px;
-}
-
-/* 4. NAVEGACIÓN HORIZONTAL (Corregido) */
-.main-navigation {
     background-color: white;
     border-top: 1px solid var(--color-gris-claro);
     border-bottom: 4px solid var(--color-acento-naranja); 
@@ -124,8 +86,6 @@ header {
     transform: scale(1.1);
 }
 
-
-
 .sidebar {
     height: 100%;
     width: 0; /* Empieza cerrado */
@@ -141,6 +101,7 @@ header {
     border-left: 2px solid var(--gold-hefesto); /* 3. CAMBIO: Borde en la izquierda del menú */
     border-right: none;
 }
+
 .sidebar a {
     padding: 15px 25px;
     text-decoration: none;
@@ -217,63 +178,66 @@ input[type="text"], textarea, select {
     margin-bottom: 20px;
 }
 
-
 /* Animación */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }.columna-subir {
-position: fixed !important;
-bottom: 50px !important;
-right: 30px !important;
-background: none !important;
-border: none !important;
-cursor: pointer;
-display: flex !important;
-flex-direction: column;
-align-items: center;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.5s, transform 0.3s;
-z-index: 10000;
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.columna-subir {
+    position: fixed !important;
+    bottom: 50px !important;
+    right: 30px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, transform 0.3s;
+    z-index: 10000;
 }
 
 .columna-subir.mostrar {
-opacity: 1 !important;
-visibility: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .columna-emoji {
-font-size: 45px;
-filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
+    font-size: 45px;
+    filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
 }
 
 .texto-columna {
-color: #ffd700 !important;
-font-size: 12px !important;
-font-family: 'Cinzel', serif;
-font-weight: bold;
-text-transform: uppercase;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffd700 !important;
+    font-size: 12px !important;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .derrumbe {
-animation: temblor 0.5s linear, caer 0.8s forwards !important;
+    animation: temblor 0.5s linear, caer 0.8s forwards !important;
 }
 
 @keyframes temblor {
-0% { transform: translateX(0); }
-25% { transform: translateX(-5px) rotate(-2deg); }
-50% { transform: translateX(5px) rotate(2deg); }
-100% { transform: translateX(0); }
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    50% { transform: translateX(5px) rotate(2deg); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes caer {
-to { transform: translateY(800px) rotate(90deg); opacity: 0; }
+    to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 }
-.alert_text ¨{
+
+.alert_text {
     font-style: var(--card-bg);
 }
-/* ===========================================
-    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
-   =========================================== */
+
+/* =================================================
+    RESPONSIVE ADAPTATIVO PARA EL FORO (REDDIT)
+   ================================================= */
 
 /* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
 @media (max-width: 992px) {
@@ -282,13 +246,13 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         letter-spacing: 3px;
     }
 
-    #hero h1 {
-        font-size: 2.8rem;
+    #olimpo-feed {
+        max-width: 90%;
+        margin-top: 40px;
     }
 
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+    .foro-header h1 {
+        font-size: 2.5em;
     }
 }
 
@@ -299,12 +263,21 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
     }
 
     .logo-title {
-        font-size: 1.6rem;
-        letter-spacing: 2px;
+        font-size: 1.4rem; /* Un poco más pequeño para dar espacio al botón hamburguesa */
+        letter-spacing: 1px;
         margin-bottom: 10px;
+        padding-right: 45px; /* Evita que el texto tape el botón open-btn */
+        text-align: left;
+        padding-left: 15px;
     }
 
-    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
+    .open-btn {
+        top: 12px;
+        right: 15px;
+        font-size: 24px;
+    }
+
+    /* Menú superior simétrico */
     .nav-links {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -316,26 +289,42 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         padding: 0.4rem 0.6rem;
     }
 
-    #hero {
-        min-height: 60vh;
-        padding: 1.5rem;
+    /* Redimensionamiento del Feed de Reddit */
+    #olimpo-feed {
+        max-width: 100%;
+        padding: 10px;
+        margin-top: 30px;
     }
 
-    #hero h1 {
-        font-size: 2rem;
+    .foro-header h1 {
+        font-size: 2em;
     }
 
-    #Chismesynoticiasdivinas {
-        padding: 2rem 1rem;
+    #login-area, #comment-area {
+        padding: 20px 15px;
+        margin-bottom: 25px;
     }
 
-    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    input[type="text"], textarea, select {
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
     }
 
-    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
+    .btn-divino {
+        padding: 14px;
+    }
+
+    /* Adaptación del Sidebar en Móviles */
+    .sidebar {
+        width: 0; /* Controlado por JS */
+    }
+    
+    .sidebar.abierto {
+        width: 80% !important; /* Fuerza una anchura cómoda en móviles si usas clases */
+    }
+
+    /* Posición fija del botón flotante */
     .columna-subir {
         bottom: 30px !important;
         right: 15px !important;
@@ -347,9 +336,5 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
 
     .texto-columna {
         font-size: 10px !important;
-    }
-
-    footer {
-        padding: 2rem 1rem;
     }
 }

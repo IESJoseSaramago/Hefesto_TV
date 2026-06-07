@@ -85,107 +85,16 @@ header {
     background-color: rgba(255, 69, 0, 0.1);
     border-radius: 4px;
 }
-/* --- 3. CONTENIDO "ACERCA DE NOSOTROS" (ESTILO OSCURO) --- */
-.acerca-hefesto {
-    background-color: #1a1a1a; /* Fondo oscuro para el cuadro de texto */
-    color: #e0e0e0;
-    font-family: Georgia, serif;
-    padding: 50px;
-    line-height: 1.8;
-    max-width: 900px;
-    margin: 60px auto;
-    border: 3px solid #ff4500; /* Cambiado a naranja para ir a juego */
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-}
 
-.acerca-hefesto h1 {
-    color: #ff4500; /* Naranja Hefesto */
-    text-transform: uppercase;
-    border-bottom: 3px double #ff4500;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    font-size: 3rem;
-    text-align: center;
-    text-shadow: 2px 2px 5px #000;
-}
-
-.acerca-hefesto h2 {
-    color: #ff4500;
-    font-size: 1.8em;
-    margin-top: 40px;
-    border-left: 5px solid #ff4500;
-    padding-left: 15px;
-}
-
-.acerca-hefesto strong {
-    color: #ff4}
-    .columna-subir {
-position: fixed !important;
-bottom: 50px !important;
-right: 30px !important;
-background: none !important;
-border: none !important;
-cursor: pointer;
-display: flex !important;
-flex-direction: column;
-align-items: center;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.5s, transform 0.3s;
-z-index: 10000;
-}
-
-.columna-subir.mostrar {
-opacity: 1 !important;
-visibility: visible !important;
-}
-
-.columna-emoji {
-font-size: 45px;
-filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
-}
-
-.texto-columna {
-color: #ffd700 !important;
-font-size: 12px !important;
-font-family: 'Cinzel', serif;
-font-weight: bold;
-text-transform: uppercase;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.derrumbe {
-animation: temblor 0.5s linear, caer 0.8s forwards !important;
-}
-
-@keyframes temblor {
-0% { transform: translateX(0); }
-25% { transform: translateX(-5px) rotate(-2deg); }
-50% { transform: translateX(5px) rotate(2deg); }
-100% { transform: translateX(0); }
-}
-
-@keyframes caer {
-to { transform: translateY(800px) rotate(90deg); opacity: 0; }
-}/* ===========================================
-    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
-   =========================================== */
+/* =================================================
+    RESPONSIVE PARA ACERCA DE (TABLET Y MÓVIL)
+   ================================================= */
 
 /* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
 @media (max-width: 992px) {
     .logo-title {
         font-size: 2rem;
         letter-spacing: 3px;
-    }
-
-    #hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
     }
 }
 
@@ -201,7 +110,6 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
         margin-bottom: 10px;
     }
 
-    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
     .nav-links {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -211,42 +119,5 @@ to { transform: translateY(800px) rotate(90deg); opacity: 0; }
     .nav-links a {
         font-size: 0.75rem;
         padding: 0.4rem 0.6rem;
-    }
-
-    #hero {
-        min-height: 60vh;
-        padding: 1.5rem;
-    }
-
-    #hero h1 {
-        font-size: 2rem;
-    }
-
-    #Chismesynoticiasdivinas {
-        padding: 2rem 1rem;
-    }
-
-    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
-    .columna-subir {
-        bottom: 30px !important;
-        right: 15px !important;
-    }
-
-    .columna-emoji {
-        font-size: 35px;
-    }
-
-    .texto-columna {
-        font-size: 10px !important;
-    }
-
-    footer {
-        padding: 2rem 1rem;
     }
 }
