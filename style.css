@@ -11,6 +11,40 @@
     --fuente-sans: Arial, Helvetica, sans-serif;
 }
 
+/* --- Configuración base para el Header --- */
+header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Adaptación para Dispositivos Móviles (Pantallas menores a 768px) --- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Alinea el título y el menú en vertical */
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Si tus enlaces de navegación están en una lista o contenedor (por ejemplo, <nav>) */
+  nav {
+    display: flex;
+    flex-wrap: wrap;       /* Permite que los botones salten de línea si no caben */
+    justify-content: center;
+    gap: 10px;             /* Espaciado entre las opciones del menú */
+    width: 100%;
+    margin-top: 10px;      /* Separa el menú del título "HEFESTO TV" */
+  }
+
+  nav a {
+    font-size: 14px;       /* Reduce un poco el tamaño de la fuente en móviles */
+    padding: 5px 10px;
+  }
+}
+
 /* --- 1. GLOBAL Y RESET --- */
 * {
     margin: 0;
