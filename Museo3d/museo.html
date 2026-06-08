@@ -1,52 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Museo 3D - Hefesto TV</title>
     <link rel="stylesheet" href="museo.css">
     <style>
-        body { margin: 0; overflow: hidden; background-color: #000; }
+        body { margin: 0;  background-color: #000; }
         #unity-container { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
         canvas { width: 100%; height: 100%; }
     </style>
 </head>
 <body>
-   <div id="welcome-overlay">
-    <div class="dialogue-container">
-        <img src="../img/Hermesmuseo.jpg" alt="Guía Mitológico" class="character-img">
-        <div class="text-box">
-            <h2>¡Bienvenido al Museo de Hefesto TV!</h2>
-            <p>Saludos, mortal. Soy tu guía en este recorrido. Para moverte por las salas del museo, utiliza las <strong>flechas del teclado</strong> o las teclas <strong>WASD</strong>.</p>
-            <p>Para interactuar con los cuadros y descubrir sus mitos, acércate a ellos y pulsa la tecla <strong>F12 y mira las propiedades de todas las grandes obras</strong> .</p>
-            
-            <button id="start-button" class="btn-mitologico">Comenzar Recorrido</button>
-        </div>
+    <section class="museo-contenedor">
+  <h2 class="titulo-museo">🏛️ Galería de Esculturas del Olimpo</h2>
+  <p class="subtitulo-museo">Selecciona una figura para examinarla en 3D:</p>
+
+  <!-- Sistema de control de salas del museo -->
+  <input type="radio" id="estatua1" name="museo-nav" checked>
+  <input type="radio" id="estatua2" name="museo-nav">
+  <input type="radio" id="estatua3" name="museo-nav">
+  <input type="radio" id="estatua4" name="museo-nav">
+  <!-- Los botones para cambiar de figura -->
+  <div class="botones-museo">
+    <label for="estatua1" class="btn-sala">El todo poderoso e idiota de mi padre</label>
+    <label for="estatua2" class="btn-sala">La trinidad desastrosa: mi ex, la del arco y la empollona</label>
+    <label for="estatua3" class="btn-sala">La listilla de mi media hermana</label>
+    <label for="estatua4" class="btn-sala">La comida perfecta pan y vino</label>
+  </div>
+
+  <!-- Las salas que contienen cada iframe de Sketchfab -->
+  <div class="salas-contenedor">
+    
+    <!-- FIGURA 1 -->
+    <div class="sala sala-zeus">
+        <!-- PEGA AQUÍ EL IFRAME 1 DE SKETCHFAB -->
+       <div class="sketchfab-embed-wrapper"> <iframe title="Zeus with Lightning Bolt" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/f026fb95f0554ccfbc3abeec7aa6cd11/embed?autostart=1&transparent=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/zeus-with-lightning-bolt-f026fb95f0554ccfbc3abeec7aa6cd11?utm_medium=embed&utm_campaign=share-popup&utm_content=f026fb95f0554ccfbc3abeec7aa6cd11" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Zeus with Lightning Bolt </a> by <a href="https://sketchfab.com/jsola60?utm_medium=embed&utm_campaign=share-popup&utm_content=f026fb95f0554ccfbc3abeec7aa6cd11" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> jsola60 </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=f026fb95f0554ccfbc3abeec7aa6cd11" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+      <p class="info-estatua"><strong>Estatua de Zeus:</strong> Dios del cielo y el trueno, gobernante del monte Olimpo y el idiota infiel más grande de todos los tiempos.</p>
     </div>
-</div>
-    <div id="unity-container">
-        <canvas id="unity-canvas"></canvas>
+
+    <!-- FIGURA 2 -->
+    <div class="sala sala-trinidad">
+      <div class="sketchfab-embed-wrapper"> <iframe title="Artemis, Athene und Aphrodite" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/a4fc173d7b3b485698872315ba2f0f0f/embed?autostart=1&transparent=1&ui_watermark_link=0&ui_watermark=0"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/artemis-athene-und-aphrodite-a4fc173d7b3b485698872315ba2f0f0f?utm_medium=embed&utm_campaign=share-popup&utm_content=a4fc173d7b3b485698872315ba2f0f0f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Artemis, Athene und Aphrodite </a> by <a href="https://sketchfab.com/www.noe-3d.at?utm_medium=embed&utm_campaign=share-popup&utm_content=a4fc173d7b3b485698872315ba2f0f0f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> noe-3d.at </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a4fc173d7b3b485698872315ba2f0f0f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+       
+      <p class="info-estatua"><strong>Estatua de la trinidad desastrosa:</strong> Las diosas de mis pesadillas, mi ex, la empollona de mi media hermana y la niña pesada y pura del arco.</p>
     </div>
 
-    <script src="ProyectoPrueba_WebBuilds.loader.js"></script>
-    <script>
-        createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "ProyectoPrueba_WebBuilds.data",
-            frameworkUrl: "ProyectoPrueba_WebBuilds.framework.js",
-            codeUrl: "ProyectoPrueba_WebBuilds.wasm",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
-            productName: "MuseoMitologia",
-            productVersion: "0.1",
-        });
+    <!-- FIGURA 3 -->
+    <div class="sala sala-atenea">
+      <div class="sketchfab-embed-wrapper"> <iframe title="Athena Promachos" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/794fa13da8924b2baa0b1406ae65b97e/embed?autostart=1&transparent=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/athena-promachos-794fa13da8924b2baa0b1406ae65b97e?utm_medium=embed&utm_campaign=share-popup&utm_content=794fa13da8924b2baa0b1406ae65b97e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Athena Promachos </a> by <a href="https://sketchfab.com/colinfizgig?utm_medium=embed&utm_campaign=share-popup&utm_content=794fa13da8924b2baa0b1406ae65b97e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> colinfizgig </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=794fa13da8924b2baa0b1406ae65b97e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+      <p class="info-estatua"><strong>Estatua de Atenea:</strong> Diosa de la guerra estratégica, la sabiduría, la artesanía y medio hermana empollona a tiempo completo.</p>
+    </div>
+ <!-- FIGURA 4 -->
+    <div class="sala sala-dioniso-pan">
+      <div class="sketchfab-embed-wrapper"> <iframe title="Dionysus With Pan" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/a5786ab302e842f2b15f8dead0671b6d/embed?autostart=1&transparent=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/dionysus-with-pan-a5786ab302e842f2b15f8dead0671b6d?utm_medium=embed&utm_campaign=share-popup&utm_content=a5786ab302e842f2b15f8dead0671b6d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Dionysus With Pan </a> by <a href="https://sketchfab.com/variegatedmedia?utm_medium=embed&utm_campaign=share-popup&utm_content=a5786ab302e842f2b15f8dead0671b6d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> variegatedmedia </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a5786ab302e842f2b15f8dead0671b6d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+      <p class="info-estatua"><strong>Estatua de los dioses Dioniso y Pan:</strong> Uno un dios fiestero y gamberro, medio hermano mio, el otro todo lo contrario, la calma de la naturaleza.</p>
+    </div> 
 
-        document.getElementById('start-button').addEventListener('click', function() {
-    var overlay = document.getElementById('welcome-overlay');
-    overlay.style.opacity = '0';
-    setTimeout(function() {
-        overlay.style.display = 'none';
-    }, 500); // Espera a que termine la animación de opacidad para quitarlo del todo
-});
-
-    </script>
+  </div>
+  </section>    
 </body>
 </html>

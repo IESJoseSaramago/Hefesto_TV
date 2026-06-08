@@ -1,57 +1,87 @@
-/* Capa que cubre toda la pantalla por encima de Unity */
-#welcome-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(10, 10, 10, 0.9); /* Fondo oscuro para resaltar al personaje */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Asegura que esté por encima del canvas de Unity */
-    transition: opacity 0.5s ease; /* Efecto de desvanecimiento al empezar */
-    font-family: 'Times New Roman', Times, serif; /* O la tipografía clásica de tu web */
-    color: #f0e6d2;
+/* Contenedor principal */
+.museo-contenedor {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fdfbf7; /* Fondo color papiro/mármol claro */
+  border: 2px solid #d4af37; /* Borde dorado antiguo */
+  border-radius: 12px;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
-/* Contenedor del personaje y el texto */
-.dialogue-container {
-    display: flex;
-    max-width: 800px;
-    background: #1a1a1a;
-    border: 2px solid #d4af37; /* Borde dorado mitológico */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+/* Ocultar los inputs de radio nativos */
+input[name="museo-nav"] {
+  display: none;
 }
 
-.character-img {
-    width: 200px;
-    height: auto;
-    object-fit: contain;
-    margin-right: 20px;
+/* Estilo de los botones */
+.botones-museo {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
-.text-box h2 {
-    color: #d4af37;
-    margin-top: 0;
+.btn-sala {
+  padding: 10px 20px;
+  background: #e8e2d5;
+  border: 1px solid #c5b69e;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4a3b2c;
+  transition: all 0.3s ease;
 }
 
-/* Botón con estilo clásico */
-.btn-mitologico {
-    background-color: #d4af37;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 4px;
-    transition: background 0.3s;
+.btn-sala:hover {
+  background: #ff4500;
+  color: white;
 }
 
-.btn-mitologico:hover {
-    background-color: #fff;
+/* Estilo de las salas y visores */
+.salas-contenedor {
+  position: relative;
+  background: #000; /* Fondo negro para que resalten los modelos 3D */
+  border-radius: 8px;
+  overflow: auto;
 }
+
+.sala {
+  display: none; /* Por defecto, todas las salas están ocultas */
+  padding: 15px;
+}
+
+.sketchfab-embed-wrapper iframe {
+  width: 100%;
+  height: 450px; /* Altura ideal del visor */
+  border: none;
+}
+
+.info-estatua {
+  background: #96a8da;
+  color: #333;
+  margin: 0;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-top: 1px solid #ff4500;
+  border-radius: 5px;
+}
+
+/* LA MAGIA DEL CSS: Mostrar la sala según el botón seleccionado */
+#estatua1:checked ~ .salas-contenedor .sala-zeus { display: block; }
+#estatua2:checked ~ .salas-contenedor .sala-trinidad { display: block; }
+#estatua3:checked ~ .salas-contenedor .sala-atenea { display: block; }
+#estatua4:checked ~ .salas-contenedor .sala-dioniso-pan { display: block; }
+
+/* Cambiar el color del botón activo */
+#estatua1:checked ~ .botones-museo label[for="estatua1"],
+#estatua2:checked ~ .botones-museo label[for="estatua2"],
+#estatua3:checked ~ .botones-museo label[for="estatua3"],
+#estatua4:checked ~ .botones-museo label[for="estatua4"]{
+  background: #4a3b2c;
+  color: #ff4500;
+  border-color: #ff4500;
+}
+body{overflow-y: scroll;}
