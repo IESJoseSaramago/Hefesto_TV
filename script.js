@@ -29,3 +29,21 @@ function mostrarNotificacionHermes() {
 
 document.addEventListener('DOMContentLoaded', mostrarNotificacionHermes);
 
+const botonTemplo = document.querySelector('.columna-subir');
+
+window.addEventListener('scroll', () => {
+    // Si el usuario baja más de 200 píxeles, muestra el templo. Si vuelve arriba, lo esconde.
+    if (window.scrollY > 200) { 
+        botonTemplo.classList.add('mostrar');
+    } else {
+        botonTemplo.classList.remove('mostrar');
+    }
+});
+
+// Al hacer clic, sube suavemente al inicio
+botonTemplo.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
