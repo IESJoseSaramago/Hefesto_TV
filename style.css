@@ -1,6 +1,6 @@
-/* ===========================================
-    HEFESTO TV - DISEÑO ORIGINAL RESTAURADO
-   =========================================== */
+/* ========================================================
+    HEFESTO TV - DISEÑO ORIGINAL REPARADO Y UNIFICADO
+   ======================================================== */
 
 :root {
     --naranja-hefesto: #ff4500;
@@ -10,8 +10,6 @@
     --fuente-serif: 'Times New Roman', Times, serif;
     --fuente-sans: Arial, Helvetica, sans-serif;
 }
-
-
 
 /* --- 1. GLOBAL Y RESET --- */
 * {
@@ -24,10 +22,19 @@ html, body {
     font-family: var(--fuente-serif);
     line-height: 1.6;
     background-color: var(--color-fondo);
-    color: var(--color-texto);
+    color: var(--texto-oscuro);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     /* Cursor de herramienta de Hefesto */
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='40' height='40' style='font-size:30px'%3E%3Ctext y='35'%3E🔧%3C/text%3E%3C/svg%3E"), auto !important;
+}
+
+/* Asegura que el contenido principal empuje el diseño correctamente hacia abajo */
+main {
+    flex: 1 0 auto;
+    display: block;
+    width: 100%;
 }
 
 /* --- 2. HEADER Y NAV (Tu diseño original) --- */
@@ -108,6 +115,14 @@ header {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+}
+
+#Chismesynoticiasdivinas h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: var(--fuente-sans);
 }
 
 .Chismesynoticiasdivinas-grid {
@@ -134,6 +149,12 @@ header {
     object-fit: cover;
 }
 
+.Mito-card h3 {
+    padding: 1rem 1rem 0 1rem;
+    font-size: 1.25rem;
+    flex-grow: 1;
+}
+
 /* --- 5. BOTONES --- */
 .cta-button, .Mito-card a {
     background-color: var(--morado-noticias);
@@ -153,6 +174,163 @@ header {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
 }
+/* =======================================================
+    REDISENO INMUNE DE LA NEWSLETTER DE HERMES (ANTI-CONFLICTOS)
+   ======================================================= */
+
+#hermes-newsletter-section {
+    display: block !important;
+    clear: both !important;
+    width: 100% !important;
+    background-color: #F8F8F8 !important;
+    padding: 60px 0 !important;
+    margin: 40px 0 0 0 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+.hermes-boletin-box {
+    max-width: 500px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    border-top: 5px solid #ff4500 !important;
+    border-radius: 12px !important;
+    padding: 40px 30px 30px 30px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+.hermes-boletin-badge {
+    position: absolute !important;
+    top: -16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background-color: rgb(66, 40, 182) !important;
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    padding: 6px 20px !important;
+    border-radius: 20px !important;
+    letter-spacing: 1px !important;
+    white-space: nowrap !important;
+}
+
+#hermes-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #111111 !important;
+    margin: 0 0 15px 0 !important;
+    text-transform: uppercase !important;
+    line-height: 1.3 !important;
+}
+
+#hermes-message {
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 16px !important;
+    color: #444444 !important;
+    margin: 0 0 25px 0 !important;
+    line-height: 1.5 !important;
+}
+
+#hermes-message strong {
+    color: #ff4500 !important;
+    font-weight: bold !important;
+}
+
+#hermes-message em {
+    color: rgb(66, 40, 182) !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+}
+
+#hermes-form {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.hermes-form-fields {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+.hermes-input-group {
+    width: 100% !important;
+    display: block !important;
+}
+
+.hermes-input-group input {
+    width: 100% !important;
+    height: 48px !important;
+    padding: 0 15px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    border: 2px solid #dddddd !important;
+    border-radius: 6px !important;
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease !important;
+}
+
+.hermes-input-group input:focus {
+    border-color: rgb(66, 40, 182) !important;
+}
+
+.hermes-submit-btn {
+    width: 100% !important;
+    height: 48px !important;
+    background-color: rgb(66, 40, 182) !important;
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+}
+
+.hermes-submit-btn:hover {
+    background: linear-gradient(45deg, #ff4500, #ff8c00) !important;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+}
+
+.hermes-submit-btn:disabled {
+    background-color: #cccccc !important;
+    background: #cccccc !important;
+    cursor: not-allowed !important;
+}
+
+/* Adaptación móvil ultra limpia */
+@media (max-width: 600px) {
+    #hermes-newsletter-section {
+        padding: 40px 10px !important;
+    }
+    .hermes-boletin-box {
+        width: 95% !important;
+        padding: 35px 15px 20px 15px !important;
+    }
+    #hermes-title {
+        font-size: 18px !important;
+    }
+    #hermes-message {
+        font-size: 14px !important;
+    }
+}
+
 
 /* --- 6. FOOTER --- */
 footer {
@@ -161,12 +339,15 @@ footer {
     text-align: center;
     padding: 3rem;
     border-top: 5px solid var(--naranja-hefesto);
+    width: 100%;
+    clear: both;
+    flex-shrink: 0;
 }
 
 /* --- LA COLUMNA (FIJA A LA DERECHA) --- */
 .columna-subir {
     position: fixed !important;
-    bottom: 160px !important; /* Altura para no tapar noticias */
+    bottom: 160px !important;
     right: 30px !important;
     left: auto !important;
     background: none !important;
@@ -190,20 +371,20 @@ footer {
 .columna-emoji {
     font-size: 45px;
     filter: sepia(1) saturate(5) hue-rotate(10deg) drop-shadow(0 0 5px #ffd700);
-    line-height: 1; /* Evita espacios extraños */
+    line-height: 1;
 }
 
 .texto-columna {
     color: #ffd700 !important;
-    font-size: 12px !important; /* Un poco más grande para que se lea */
+    font-size: 12px !important;
     font-family: 'Cinzel', serif;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 5px; /* Separación del icono */
+    margin-top: 5px;
     letter-spacing: 1.5px;
-    /* Sombra negra para que resalte sobre cualquier fondo */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000; 
 }
+
 /* --- 8. ANIMACIONES --- */
 @keyframes glow {
     from { text-shadow: 0 0 10px var(--naranja-hefesto); }
@@ -226,84 +407,11 @@ footer {
 }
 
 /* ===========================================
-    NUEVAS REGLAS RESPONSIVAS (MÓVIL Y TABLET)
+    REGLAS RESPONSIVAS (MÓVIL Y TABLET)
    =========================================== */
-
-/* --- Ajustes para Tablets (Pantallas menores a 992px) --- */
 @media (max-width: 992px) {
     .logo-title {
         font-size: 2rem;
         letter-spacing: 3px;
     }
-
-    #hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-}
-
-/* --- Ajustes para Móviles (Pantallas menores a 600px) --- */
-@media (max-width: 600px) {
-    header {
-        padding: 1rem 0;
-    }
-
-    .logo-title {
-        font-size: 1.6rem;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-    }
-
-    /* El menú se vuelve flexible y envuelve los enlaces simétricamente */
-    .nav-links {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        padding: 0.6rem 0.5rem;
-    }
-
-    .nav-links a {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.6rem;
-    }
-
-    #hero {
-        min-height: 60vh;
-        padding: 1.5rem;
-    }
-
-    #hero h1 {
-        font-size: 2rem;
-    }
-
-    #Chismesynoticiasdivinas {
-        padding: 2rem 1rem;
-    }
-
-    /* Fuerza a que las tarjetas ocupen el ancho completo de forma limpia */
-    .Chismesynoticiasdivinas-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    /* Reposicionamiento de la columna flotante para que no estorbe en pantallas chicas */
-    .columna-subir {
-        bottom: 30px !important;
-        right: 15px !important;
-    }
-
-    .columna-emoji {
-        font-size: 35px;
-    }
-
-    .texto-columna {
-        font-size: 10px !important;
-    }
-
-    footer {
-        padding: 2rem 1rem;
-    }
-}
+#hero h1 {font-size: 2.8rem;}.Chismesynoticiasdivinas-grid {grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 1.5rem;}}@media (max-width: 600px) {header {padding: 1rem 0;}.logo-title {font-size: 1.6rem;letter-spacing: 2px;margin-bottom: 10px;}.nav-links {flex-wrap: wrap;gap: 0.5rem;padding: 0.6rem 0.5rem;}.nav-links a {font-size: 0.75rem;padding: 0.4rem 0.6rem;}#hero {min-height: 60vh;padding: 1.5rem;}#hero h1 {font-size: 2rem;}#Chismesynoticiasdivinas {padding: 2rem 1rem;}.Chismesynoticiasdivinas-grid {grid-template-columns: 1fr;gap: 1.5rem;}.columna-subir {bottom: 30px !important;right: 15px !important;}.columna-emoji {font-size: 35px;}.texto-columna {font-size: 10px !important;}footer {padding: 2rem 1rem;}}

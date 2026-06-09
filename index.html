@@ -84,8 +84,105 @@ event_id: 'eventId0001'
                 </article>
             </div>
         </section>
+        <!-- FIN DEL MAIN ORIGINAL DE TU WEB -->
     </main>
-    
+
+      <!-- ===========================================
+        SECCIÓN DE LA NEWSLETTER DE HERMES (AISLADA TOTALMENTE)
+    =========================================== -->
+    <section id="hermes-newsletter-section">
+        <div class="hermes-boletin-box">
+            <div class="hermes-boletin-badge">✉️ Mensajero Alado</div>
+            <h2 id="hermes-title">⚡ ¡El Heraldo de Hermes te busca! ⚡</h2>
+            <p id="hermes-message">Cargando bendiciones y cupos desde el Olimpo...</p>
+            
+            <form id="hermes-form" style="display: none;" onsubmit="enviarFormularioHermes(event)">
+                <div class="hermes-form-fields">
+                    <div class="hermes-input-group">
+                        <input type="text" id="hermes-name" placeholder="Tu nombre del semidiós" required>
+                    </div>
+                    <div class="hermes-input-group">
+                        <input type="email" id="hermes-email" placeholder="Tu correo electrónico" required>
+                    </div>
+                    <button type="submit" class="hermes-submit-btn">Obtener mi bendición divina</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT DE CONTROL SIN ERRORES DE SINTAXIS -->
+    <script>
+    const CONFIG_HERMES = {
+        eventoEspecial: false, 
+        nombreEvento: "El inicio del Olimpo", 
+        stickerPack: "Pack Exclusivo del Semidios pricipiante",
+        googleFormAction: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdxUkP8nR2PQl30HZfnn3O7affPMkmL7XaaU3RKs3M69YwngQ/formResponse",
+        entryIDNombre: "entry.748416656", 
+        entryIDEmail: "entry.1414238633"   
+    };
+
+    let totalVisitasRegistradas = 120; 
+    const LIMITE_CUPOS = 150;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const mensaje = document.getElementById("hermes-message");
+        const formulario = document.getElementById("hermes-form");
+
+        if (localStorage.getItem("hermes_suscrito") === "true") {
+            mensaje.innerHTML = "¡Ya estás en el registro del Olimpo! Revisa tu Gmail, Hermes ya vuela hacia allá.";
+            formulario.style.display = "none";
+            return;
+        }
+
+        if (CONFIG_HERMES.eventoEspecial) {
+            mensaje.innerHTML = `¡Gran Evento: <strong>${CONFIG_HERMES.nombreEvento}</strong>! Regístrate ahora y llévate el <em>${CONFIG_HERMES.stickerPack}</em> directamente en tu correo.`;
+            formulario.style.display = "block";
+        } else if (totalVisitasRegistradas < LIMITE_CUPOS) {
+            let cuposDisponibles = LIMITE_CUPOS - totalVisitasRegistradas;
+            mensaje.innerHTML = `¡Sé uno de los primeros 150 lectores! Quedan <strong>${cuposDisponibles}</strong> cupos para recibir stickers mitológicos en tu Gmail.`;
+            formulario.style.display = "block";
+        } else {
+            mensaje.innerHTML = "El pack de stickers inicial se ha agotado. Suscríbete para recibir alertas de próximos chismes olímpicos y eventos especiales.";
+            formulario.style.display = "block";
+            document.querySelector(".hermes-submit-btn").textContent = "Seguir los chismes del Olimpo";
+        }
+    });
+
+    function enviarFormularioHermes(event) {
+        event.preventDefault();
+        const nombreInput = document.getElementById("hermes-name").value;
+        const emailInput = document.getElementById("hermes-email").value;
+        const botonSubmit = document.querySelector(".hermes-submit-btn");
+
+        botonSubmit.disabled = true;
+        botonSubmit.textContent = "Enviando mensaje alado...";
+
+        const formData = new FormData();
+        formData.append(CONFIG_HERMES.entryIDNombre, nombreInput);
+        formData.append(CONFIG_HERMES.entryIDEmail, emailInput);
+
+        fetch(CONFIG_HERMES.googleFormAction, {
+            method: "POST",
+            mode: "no-cors", 
+            body: formData
+        })
+        .then(() => {
+            localStorage.setItem("hermes_suscrito", "true");
+            document.getElementById("hermes-message").innerHTML = "¡Éxito divino! Tu dirección ha sido guardada. Revisa tu bandeja de entrada en Gmail.";
+            document.getElementById("hermes-form").style.display = "none";
+        })
+        .catch(error => {
+            console.error("Error al conectar con el Olimpo:", error);
+            botonSubmit.disabled = false;
+            botonSubmit.textContent = "Reintentar bendición";
+            alert("Hubo un problema de conexión con el Olimpo. Inténtalo de nuevo.");
+        });
+    }
+    </script>
+
+
+  
     <footer>
         <p>&copy; 2026 Hefesto TV. Todos los derechos reservados</p>
     </footer>
