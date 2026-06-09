@@ -149,36 +149,43 @@ event_id: 'eventId0001'
         }
     });
 
-    function enviarFormularioHermes(event) {
-        event.preventDefault();
-        const nombreInput = document.getElementById("hermes-name").value;
-        const emailInput = document.getElementById("hermes-email").value;
-        const botonSubmit = document.querySelector(".hermes-submit-btn");
+   function enviarFormularioHermes(event) {
+    event.preventDefault();
+    const nombreInput = document.getElementById("hermes-name").value;
+    const emailInput = document.getElementById("hermes-email").value;
+    const botonSubmit = document.querySelector(".hermes-submit-btn");
 
-        botonSubmit.disabled = true;
-        botonSubmit.textContent = "Enviando mensaje alado...";
+    botonSubmit.disabled = true;
+    botonSubmit.textContent = "Enviando mensaje alado...";
 
-        const formData = new FormData();
-        formData.append(CONFIG_HERMES.entryIDNombre, nombreInput);
-        formData.append(CONFIG_HERMES.entryIDEmail, emailInput);
+    const formData = new FormData();
+    formData.append(CONFIG_HERMES.entryIDNombre, nombreInput);
+    formData.append(CONFIG_HERMES.entryIDEmail, emailInput);
 
-        fetch(CONFIG_HERMES.googleFormAction, {
-            method: "POST",
-            mode: "no-cors", 
-            body: formData
-        })
-        .then(() => {
-            localStorage.setItem("hermes_suscrito", "true");
-            document.getElementById("hermes-message").innerHTML = "¡Éxito divino! Tu dirección ha sido guardada. Revisa tu bandeja de entrada en Gmail.";
-            document.getElementById("hermes-form").style.display = "none";
-        })
-        .catch(error => {
-            console.error("Error al conectar con el Olimpo:", error);
-            botonSubmit.disabled = false;
-            botonSubmit.textContent = "Reintentar bendición";
-            alert("Hubo un problema de conexión con el Olimpo. Inténtalo de nuevo.");
-        });
-    }
+    fetch(CONFIG_HERMES.googleFormAction, {
+        method: "POST",
+        mode: "no-cors", 
+        body: formData
+    })
+    .then(() => {
+        // Guardamos el registro para que no vuelva a salir el formulario
+        localStorage.setItem("hermes_suscrito", "true");
+        
+        // CORRECCIÓN DIVINA: Apagamos el formulario entero de raíz
+        const formularioCompleto = document.getElementById("hermes-form");
+        formularioCompleto.style.setProperty("display", "none", "important");
+        
+        // Pintamos el mensaje de éxito en grande y centrado
+        document.getElementById("hermes-message").innerHTML = "🎉 <strong>¡Éxito divino!</strong> Tu dirección ha sido guardada en el Olimpo.<br>Revisa tu bandeja de entrada en Gmail, Hermes ya va en camino.";
+    })
+    .catch(error => {
+        console.error("Error al conectar con el Olimpo:", error);
+        botonSubmit.disabled = false;
+        botonSubmit.textContent = "Reintentar bendición";
+        alert("Hubo un problema de conexión con el Olimpo. Inténtalo de nuevo.");
+    });
+}
+
     </script>
 
 
